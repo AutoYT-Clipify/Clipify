@@ -1,0 +1,51 @@
+import { howItWorksData } from '@/constants'
+import React from 'react'
+import {motion} from 'framer-motion'
+
+const HowItWorks = () => {
+    return (
+        <div id="services" className="mt-[15rem] lg:mt-[10.5rem] px-[7rem] ">
+            <h4 className="flex justify-center bold gradient text-[5rem] lg:text-[2rem] mb-[-30px] lg:mb-[-10px]">
+                How it works
+            </h4>
+            <h2 className="flex justify-center bold mt-[2rem]  text-center lg:mt-[0rem] text-[9rem] lg:text-[5rem]">
+                Instruct our AI, generate and publish.
+            </h2>
+            <p className='regular justify-center text-center m-auto lg:w-[55%]  lg:pr-[6rem]  text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>Give our AI a few keywords and we'll automatically create blog articles, product descriptions, artwork and more for you with just a click of a button.</p>
+            {howItWorksData?.map((i) => (
+                <div className={i?.id === 1 ? `flex flex-col lg:flex-row justify-center gap-[0rem] my-[10rem]` : `flex flex-col lg:flex-row-reverse justify-center gap-[0rem] my-[3rem]`  }>
+                    <div className={i?.id === 2 ? 'lg:ml-[8rem]' : ''}>
+                        <h2 className="inline-block  bold mt-[2rem] lg:mt-[0rem] text-[8rem] lg:text-[5rem]">
+                            {i?.title}
+                        </h2>
+                        <p className='regular inline-block lg:pr-[6rem]  text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>
+                            {i?.description}
+                        </p>
+                        {
+                            i?.points?.map((point) => (
+                                <div className='flex gap-[3rem] lg:gap-2'>
+                                    <img className='w-[7%] lg:w-[2%]' src="/tick.svg" />
+                                    <p className='regular inline-block lg:pr-[6rem] mt-[4rem] text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>{point}</p>
+                                </div>
+                            ))
+                        } 
+                    </div>
+                    <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    variants={{
+                        visible: { opacity: 1, scale: 1 },
+                        hidden: { opacity: 0, scale: 0 }
+                    }}
+                    className="lg:mt-0 mt-[15rem]">
+                        <img src={i?.image} className={i?.id === 2 ? `h-[100%] lg:w-[130rem] rounded-[1rem]` : `h-[100%] lg:w-[100rem] rounded-[1rem]`}/>
+                    </motion.div>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+export default HowItWorks

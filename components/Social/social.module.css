@@ -1,0 +1,3 @@
+.social:hover {
+    transform: translateZ(10px) rotateX(20deg) rotateY(20deg);
+}

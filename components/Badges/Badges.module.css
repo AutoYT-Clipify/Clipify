@@ -1,0 +1,4 @@
+.badges {
+    -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 72%, 50% 100%, 0 74%);
+    clip-path: polygon(0% 0%, 100% 0, 100% 72%, 50% 100%, 0 74%);
+}

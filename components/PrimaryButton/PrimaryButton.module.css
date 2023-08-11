@@ -1,0 +1,117 @@
+.button {
+	/* width: 18.8rem;
+	height: 3.9rem; */
+	display: flex;
+	color: white;
+
+	border-radius: 10px;
+	/* background-image: linear-gradient(
+		78.51deg,
+		rgba(59, 59, 249, 0.5) 9.96%,
+		rgba(16, 224, 249, 0.5) 114.51%,
+		rgba(146, 255, 255, 0.5) 214.96%
+	); */
+	/* background: linear-gradient(
+		78.51deg,
+		rgba(59, 59, 249, 0.816) 9.96%,
+		rgba(16, 226, 249, 0.79) 114.51%,
+		rgba(146, 255, 255, 0.711) 214.96%
+	); */
+	background-color: #004bff;
+	/* box-shadow: 0 3px 30px 3px rgba(59, 59, 249, 0.6); */
+	transition: 0.3s ease-out all;
+	position: relative;
+	z-index: 1;
+}
+.button::before {
+	/* position: absolute;
+	content: '';
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-radius: 3.6rem; */
+	/* border-radius: 1rem; */
+	/* background: linear-gradient(
+		78.51deg,
+		rgba(59, 59, 249, 0.816) 9.96%,
+		rgba(16, 226, 249, 0.79) 114.51%,
+		rgba(146, 255, 255, 0.711) 214.96%
+	);
+	z-index: -1;
+	transition: opacity 0.3s linear; */
+	/* opacity: 0; */
+}
+/* .button:hover::before {
+	opacity: 1;
+} */
+
+.button:focus {
+	box-shadow: linear-gradient(
+		78.51deg,
+		rgba(59, 59, 249, 0.5) 9.96%,
+		rgba(16, 224, 249, 0.5) 114.51%,
+		rgba(146, 255, 255, 0.5) 214.96%
+	);
+}
+
+.button:hover {
+	/* box-shadow: linear-gradient(
+		78.51deg,
+		rgba(59, 59, 249, 0.5) 9.96%,
+		rgba(16, 224, 249, 0.5) 114.51%,
+		rgba(146, 255, 255, 0.5) 214.96%
+	); */
+	transform: translateY(-3px);
+	transition: all .4s ease-out;
+	background: linear-gradient(
+		78.51deg,
+		rgba(13, 49, 69, 0.901) 9.96%,
+		rgba(16, 226, 249, 0.965) 114.51%,
+		rgba(146, 255, 255, 0.905) 214.96%
+	);
+}
+
+.button:active {
+	box-shadow: #d6d6e7 0 3px 7px inset;
+	transform: translateY(2px);
+}
+
+
+.buttonInverted {
+	/* width: 18.8rem;
+	height: 3.9rem; */
+	display: flex;
+	color: black;
+	border-radius: 10px;
+	/* background-image: linear-gradient(
+		78.51deg,
+		rgba(59, 59, 249, 0.5) 9.96%,
+		rgba(16, 224, 249, 0.5) 114.51%,
+		rgba(146, 255, 255, 0.5) 214.96%
+	); */
+	/* background: linear-gradient(
+		78.51deg,
+		rgba(59, 59, 249, 0.816) 9.96%,
+		rgba(16, 226, 249, 0.79) 114.51%,
+		rgba(146, 255, 255, 0.711) 214.96%
+	); */
+	background-color: #fff;
+	/* box-shadow: 0 3px 30px 3px rgba(59, 59, 249, 0.6); */
+	transition: 0.3s ease-out all;
+	/* border: 5px solid #d0d7e7; */
+	position: relative;
+	z-index: 1;
+}
+
+.buttonInverted:hover {
+	transform: translateY(-3px);
+	transition: all .4s ease-out;
+	background: linear-gradient(
+		78.51deg,
+		rgba(13, 49, 69, 0.901) 9.96%,
+		rgba(16, 226, 249, 0.965) 114.51%,
+		rgba(146, 255, 255, 0.905) 214.96%
+	);
+	
+}

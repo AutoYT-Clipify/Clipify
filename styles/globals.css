@@ -1,27 +1,199 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--primary: white;
+	--secondary: cornflowerblue;
+}
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--secondary) var(--primary);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 15px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+*::-webkit-scrollbar-track {
+	background: var(--primary);
+	border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--secondary);
+	border-radius: 14px;
+	border: 3px solid var(--primary);
+}
+
+
+@layer base {
+	@font-face {
+		font-family: 'SFProDisplayBold';
+		src: url('../public/static/font/sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.OTF');
+	}
+	@font-face {
+		font-family: 'SFProDisplyMedium';
+		src: url('../public/static/font/sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.OTF');
+	}
+	@font-face {
+		font-family: 'SFProDisaplayRegular';
+		src: url('../public/static/font/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF');
+	}
+
+	/* Sofia pro font */
+	@font-face {
+		font-family: 'sofiaPro';
+		src: url('../public/static/font/sofia-pro/sofiapro.otf');
+	}
+
+	/* Font: IBM Plex Sans */
+	@font-face {
+		font-family: 'ibmPlexSans';
+		src: url('../public/static/font/ibm-plex-sans/ibm-plex-sans.ttf');
+	}
+
+	/* Font: Poppins */
+	@font-face {
+		font-family: 'poppinsBlack';
+		src: url('../public/static/font/poppins/poppins-black.ttf');
+	}
+	@font-face {
+		font-family: 'poppinsBold';
+		src: url('../public/static/font/poppins/poppins-bold.ttf');
+	}
+	@font-face {
+		font-family: 'poppinsSemiBold';
+		src: url('../public/static/font/poppins/poppins-semiBold.ttf');
+	}
+
+	/* Font: Inter */
+	@font-face {
+		/* Available font weight: 300 - light, 400 - regular, 500 - medium, 600 - semibold, 700 - bold */
+		font-family: 'inter';
+		src: url('../public/static/font/inter/inter.ttf');
+	}
+
+	*,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: inherit;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		font-size: 62.5%;
+		box-sizing: border-box;
+	}
+
+	body {
+		color: #2f2e2e;
+	}
+	ul {
+		list-style-type: none;
+	}
+	img {
+		width: 100%;
+	}
+}
+
+@tailwind components;
+@layer components {
+	.bold {
+		font-family: 'SFProDisplayBold' !important;
+	}
+	.semiBold {
+		font-family: 'SFProDisplaySemiBold' !important;
+	
+	}
+	.medium {
+		font-family: 'inter' !important;
+		font-weight: 500;
+	}
+	.regular {
+		/* font-family: 'SFProDisaplayRegular' !important; */
+		/* font-family: 'ibmPlexSans' !important; */
+		font-family: 'inter' !important;
+		font-weight: 400;
+	}
+	.light {
+		font-family: 'inter' !important;
+		font-weight: 300;
+	}
+	.link {
+		cursor: pointer;
+		color: black;
+	}
+	.link:hover {
+		color: #4869e8;
+	}
+
+	.gradient {
+		background: -webkit-linear-gradient(#3b3bf9, #10e0f9);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.gradientText {
+		background: linear-gradient(
+			78.51deg,
+			rgba(23, 23, 251, 0.659) 9.96%,
+			rgba(25, 211, 232, 0.5) 114.51%,
+			rgba(146, 255, 255, 0.5) 214.96%
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-fill-color: transparent;
+	}
+
+	.recordShadow {
+		border: 0.917722px solid #cfd9f0;
+		box-shadow: 0px 5px 50px 3px rgba(145, 158, 171, 0.42);
+	}
+
+	.imgAbsolute {
+		top: -5%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.testiImageShadow {
+		box-shadow: -4px 12px 40px 4px rgba(145, 158, 171, 0.5) !important;
+	}
+
+	.gradientHeading {
+		background: linear-gradient(
+			78.51deg,
+			rgba(59, 59, 249, 0.816) 9.96%,
+			rgba(16, 226, 249, 0.79) 114.51%,
+			rgba(146, 255, 255, 0.711) 214.96%
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-fill-color: transparent;
+	}
+}
+
+@tailwind utilities;
+@layer utilities {
+	.container {
+		/* width: 98%; */
+		margin: auto;
+	}
+}
+
+.showcaseVideo {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  background-color: #2424d2a9;
+}
+
+.showcase-image {
+   box-shadow: 5px 10px 10px #2424d2a9;
 }

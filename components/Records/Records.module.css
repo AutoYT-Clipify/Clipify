@@ -1,0 +1,13 @@
+.recordText {
+	background: linear-gradient(
+		78.51deg,
+		rgba(59, 59, 249, 0.5) 9.96%,
+		rgba(16, 224, 249, 0.5) 114.51%,
+		rgba(146, 255, 255, 0.5) 214.96%
+	);
+    -webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-fill-color: transparent;
+		font-weight: bold;
+}
