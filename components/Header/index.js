@@ -68,8 +68,8 @@ const Navbar = () => {
 						<Link href={'/'}>
 							<img
 								className="w-[30rem] lg:w-[100%]"
-								src="/static/logo.png"
-								alt="Expelee Logo"
+								src="/static/yt-logo.png"
+								alt="Logo"
 							/>
 						</Link>
 					</motion.div>

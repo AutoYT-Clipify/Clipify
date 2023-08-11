@@ -6,7 +6,7 @@ const Footer = () => {
 			<div className="mt-[15rem] lg:mt-[10rem flex flex-wrap flex-col lg:flex-row mt-[10rem] px-[5rem] lg:px-0">
 				<div className="flex-1 pr-[12rem] gap-[1.4rem]">
 					<img
-						src={'/static/logo.png'}
+						src={'/static/yt-logo.png'}
 						alt="Footer Logo"
 						className="w-[25rem] lg:w-[11.3rem]"
 					/>
