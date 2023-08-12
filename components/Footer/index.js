@@ -1,6 +1,8 @@
 import Link from "next/link"
+import { useEffect } from "react"
 
-const Footer = () => {
+const Footer = ({social}) => {
+
 	return (
 		<footer>
 			<div className="mt-[15rem] lg:mt-[10rem flex flex-wrap flex-col lg:flex-row mt-[10rem] px-[5rem] lg:px-0">
@@ -62,10 +64,10 @@ const Footer = () => {
 							</div>
 						</div>
 						<div className="flex gap-[3rem] lg:gap-[1rem]">
-						<Link href="#"><img className={`w-[9rem] lg:w-[3rem] lg:h-[3rem]`} src={'/static/github.svg'} alt='githubin' /></Link>
-						<Link href="#"><img className={`w-[9rem] lg:w-[3rem] lg:h-[3rem]`} src={'/static/instagram.svg'} alt='instagramin' /></Link>
-						<Link href="#"><img className={`w-[9rem] lg:w-[3rem] lg:h-[3rem]`} src={'/static/discord.svg'} alt='discordin' /></Link>
-						<Link href="#"><img className={`w-[9rem] lg:w-[3rem] lg:h-[3rem]`} src={'/static/medium.svg'} alt='mediumin' /></Link>
+						{/* <Link href="#"><img className={`w-[9rem] lg:w-[3rem] lg:h-[3rem]`} src={'/static/github.svg'} alt='githubin' /></Link> */}
+						<Link href={social?.instagram || ''}><img className={`w-[9rem] lg:w-[3rem] lg:h-[3rem]`} src={'/static/instagram.svg'} alt='instagramin' /></Link>
+						<Link href={social?.discord || ''}><img className={`w-[9rem] lg:w-[3rem] lg:h-[3rem]`} src={'/static/discord.svg'} alt='discordin' /></Link>
+						<Link href={social?.medium || ''}><img className={`w-[9rem] lg:w-[3rem] lg:h-[3rem]`} src={'/static/medium.svg'} alt='mediumin' /></Link>
 					</div>
 					<div className="mt-[4rem] lg:mt-[2rem]">
 					<p className="medium text-[4rem] lg:text-[1.5rem] pt-[0.2rem]"> Silicon Oasis,</p>

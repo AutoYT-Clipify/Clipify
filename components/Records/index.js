@@ -11,7 +11,7 @@ const Records = ({ products={count: 10, text: ''}, members={count: 5000, text: '
 						{`+ `}
 					</h4>
 					<p className="regular text-[#414348] text-[3.3rem] lg:text-[1.8rem] text-center">
-						{products?.text ? products.text : `Products`}
+						{products?.text ? products.text : `Features`}
 					</p>
 				</div>
 				<div className="flex flex-col items-center border-r-2 pl-[3rem] pr-[4rem]">

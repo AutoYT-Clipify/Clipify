@@ -15,11 +15,13 @@ import PricingSection from '@/components/Pricing'
 import {groq} from "next-sanity"
 import { sanityClient } from '../sanity'
 import showcase from '@/y/schemas/showcase'
+import Social from '@/components/Social'
+
 
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({showcase, howItWorks, vs, pricing, testimonials, infoText}) {
+export default function Home({showcase, howItWorks, vs, pricing, testimonials, infoText, social}) {
   return (
     <Fragment>
       <Header />
@@ -32,7 +34,8 @@ export default function Home({showcase, howItWorks, vs, pricing, testimonials, i
       <Testi testimonials={testimonials} />
       <InfoText infoText={infoText} />
       <Records />
-      <Footer />
+      <Footer social={social}/>
+      <Social social={social}/>
     </Fragment>
   )
 }
@@ -65,6 +68,10 @@ export const getStaticProps = async() => {
   const infoText = await sanityClient.fetch(groq`
   *[_type == "infoText"][0]
   `)
+
+  const social = await sanityClient.fetch(groq`
+  *[_type == "social"][0]
+  `)
   return {
     props: {
       showcase,
@@ -73,6 +80,7 @@ export const getStaticProps = async() => {
       pricing,
       testimonials,
       infoText,
+      social
     },
     revalidate:10,
   }

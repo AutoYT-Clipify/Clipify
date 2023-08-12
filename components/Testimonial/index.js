@@ -7,7 +7,7 @@ import { urlFor } from '@/sanity';
 
 const Testimonial = ({testimonials}) => {
 	const [items, setItems] = useState(null)
-console.log(testimonials)
+
 	useEffect(() => {
 		const items = testimonials?.testimonials?.map((item, index) => {
 			const { name, image, description } = item
