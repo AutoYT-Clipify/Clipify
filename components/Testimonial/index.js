@@ -46,7 +46,7 @@ const Testimonial = () => {
 			items: 2,
 		},
 	}
-	console.log(items)
+	
 	return (
 		<div id="testimonials" className="relative lg:mx-auto mx-[1rem] mt-[15rem] lg:mt-[10.5rem]">
 			<div className="mb-[8rem]">

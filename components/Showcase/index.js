@@ -6,19 +6,21 @@ import Image from 'next/image'
 import ButtonInverted from "../PrimaryButton/ButtonInverted"
 import { Player } from 'video-react';
 
-const Showcase = () => {
+const Showcase = ({showcase}) => {
+
     return (
         <>
+        {showcase && (
             <div className={" mt-[25rem] lg:mt-[15.2rem] flex flex-col lg:flex-row px-[7rem] gap-[0rem] lg:gap-[rem]"}>
                 <div className="flex-1 self-center">
                     <h4 className="flex justify-left bold gradient text-[6rem] lg:text-[2rem] mt-[8rem] lg:mt-[0rem] mb-[-30px] lg:mb-[0px]">
-                        #1 AI VIDEO GENERATION PLATFORM
+                      {showcase?.title}
                     </h4>
                     <h2 className="bold lg:pr-[6rem] text-[7rem] lg:text-[4rem] mt-[5rem] lg:mt-[0.7rem] leading-[8rem] lg:leading-[5rem]">
-                        Create professional videos without mics, cameras, or actors
+                        {showcase?.subtitle}
                     </h2>
                     <p className="regular  lg:pr-[6rem]  text-[6rem] mt-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]">
-                        Turn your text into high-quality videos with AI avatars and voiceovers — in over 120 languages.
+                        {showcase?.detail}
                     </p>
                     <motion.div
                     initial={{
@@ -64,6 +66,7 @@ const Showcase = () => {
                     </div>
                 </motion.div>
             </div>
+        )}
         </>
     )
 }

@@ -6,7 +6,7 @@ const Badges = () => {
     <div className={" mt-[25rem] lg:mt-[15.2rem] flex justify-center  px-[7rem] gap-[1rem] lg:gap-[3rem]"}>
         {
             data?.map((i) => (
-                <img className='w-[20%] lg:w-[15%]' key={i} src={`static/badges/${i}.svg`}/>
+                <img key={i} className='w-[20%] lg:w-[15%]' key={i} src={`static/badges/${i}.svg`}/>
             ))
         }
     </div>
