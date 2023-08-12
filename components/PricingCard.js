@@ -4,8 +4,6 @@ import Image from 'next/image'
 
 const PricingCard = ({ plan, subscriptionDuration }) => {
 
-	console.log(plan, 'plan')
-
 	return (
 		<>
 			<div className="drop-shadow-2xl w-[76rem]  lg:w-[39.1rem] lg:h-[60rem] border border-grey-light3 bg-white rounded-[11px] p-[4rem] lg:p-[3rem]">

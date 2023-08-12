@@ -19,7 +19,7 @@ import showcase from '@/y/schemas/showcase'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({showcase, howItWorks, vs, pricing}) {
+export default function Home({showcase, howItWorks, vs, pricing, testimonials, infoText}) {
   return (
     <Fragment>
       <Header />
@@ -28,9 +28,9 @@ export default function Home({showcase, howItWorks, vs, pricing}) {
       <HowItWorks howItWorks={howItWorks} />
       <Vs vs={vs} />
       <PricingSection pricing={pricing} />
-      <Testimonial />
-      <Testi />
-      <InfoText />
+      <Testimonial testimonials={testimonials} />
+      <Testi testimonials={testimonials} />
+      <InfoText infoText={infoText} />
       <Records />
       <Footer />
     </Fragment>
@@ -58,12 +58,21 @@ export const getStaticProps = async() => {
   *[_type == "pricing"][0]
   `)
 
+  const testimonials = await sanityClient.fetch(groq`
+  *[_type == "testimonials"][0]
+  `)
+
+  const infoText = await sanityClient.fetch(groq`
+  *[_type == "infoText"][0]
+  `)
   return {
     props: {
       showcase,
       howItWorks,
       vs,
       pricing,
+      testimonials,
+      infoText,
     },
     revalidate:10,
   }

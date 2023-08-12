@@ -1,6 +1,7 @@
+import { urlFor } from '@/sanity';
 import React, { Fragment } from 'react'
 
-const Testi = () => {
+const Testi = ({testimonials}) => {
     return (
         <Fragment>
             {/* <div className='mt-[20rem] lg:mt-[10rem]  mx-auto w-[90%] lg:w-[50%]'>
@@ -18,7 +19,7 @@ const Testi = () => {
             </Link>
             </div> */}
             <div className='mt-[5rem] grid px-[8rem] lg:px-[0rem] grid-cols-1 lg:grid-cols-3 gap-2'>
-            {testimonials?.map((item, index) => {
+            {testimonials?.testimonials?.map((item, index) => {
                 const {name, description, image} = item;
                 return (
                     
@@ -26,7 +27,7 @@ const Testi = () => {
                         key={index}
                         name={name}
                         description={description}
-                        image={image}
+                        image={urlFor(image).url()}
                     />
                 )
             })}
