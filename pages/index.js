@@ -16,12 +16,16 @@ import {groq} from "next-sanity"
 import { sanityClient } from '../sanity'
 import showcase from '@/y/schemas/showcase'
 import Social from '@/components/Social'
+import { useMediaQuery } from 'react-responsive';
+import NewTesti from '@/components/NewTesti'
 
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({showcase, howItWorks, vs, pricing, testimonials, infoText, social}) {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  
   return (
     <Fragment>
       <Header />
@@ -31,7 +35,8 @@ export default function Home({showcase, howItWorks, vs, pricing, testimonials, i
       <Vs vs={vs} />
       <PricingSection pricing={pricing} />
       <Testimonial testimonials={testimonials} />
-      <Testi testimonials={testimonials} />
+      {/* <Testi testimonials={testimonials} /> */}
+      <NewTesti />
       <InfoText infoText={infoText} />
       <Records />
       <Footer social={social}/>
