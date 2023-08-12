@@ -5,7 +5,7 @@ const Vs = ({ vs }) => {
 
     return (
         <>
-            {vs && (
+            { (
                 <div id="solutions" className="mt-[15rem] lg:mt-[19.5rem] ">
                     <h2 className="flex justify-center bold mt-[2rem] lg:mt-[0rem] text-[9rem] lg:text-[5rem]">
                        {vs?.title}

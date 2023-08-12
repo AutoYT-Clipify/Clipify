@@ -10,7 +10,7 @@ const Showcase = ({showcase}) => {
 
     return (
         <>
-        {showcase && (
+        {(
             <div className={" mt-[25rem] lg:mt-[15.2rem] flex flex-col lg:flex-row px-[7rem] gap-[0rem] lg:gap-[rem]"}>
                 <div className="flex-1 self-center">
                     <h4 className="flex justify-left bold gradient text-[6rem] lg:text-[2rem] mt-[8rem] lg:mt-[0rem] mb-[-30px] lg:mb-[0px]">

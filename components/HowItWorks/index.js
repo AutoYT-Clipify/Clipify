@@ -22,7 +22,7 @@ const HowItWorks = ({ howItWorks }) => {
     ]
     return (
         <>
-            {howItWorks && (
+            { (
                 <div id="services" className="mt-[15rem] lg:mt-[10.5rem] px-[7rem] ">
                     <h4 className="flex justify-center bold gradient text-[5rem] lg:text-[2rem] mb-[-30px] lg:mb-[-10px]">
                         How it works
