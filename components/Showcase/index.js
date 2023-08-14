@@ -37,8 +37,8 @@ const Showcase = ({showcase}) => {
                         duration: 1,
                     }}
                     className="group mt-[4rem] lg:mt-[1.8rem] flex gap-[3rem]">
-                        <PrimaryButton text="AI Video" />
-                        <ButtonInverted text="AI Video" />
+                        <PrimaryButton text="Get Started" />
+                        {/* <ButtonInverted text="AI Video" /> */}
                     </motion.div>
                 </div>
                 {/* Image */}

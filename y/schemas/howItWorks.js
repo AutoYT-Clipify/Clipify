@@ -62,6 +62,30 @@ export default defineType({
             title: 'Menu2 Points ',
             type: 'array',
             of: [{type: 'string'}]
+        }),
+        defineField({
+            name: 'menu3Title',
+            title: 'Menu3 Title',
+            type: 'string',
+        }),
+        defineField({
+            name: 'menu3SubTitle',
+            title: 'Menu3 Sub Title',
+            type: 'string',
+        }),
+        defineField({
+            name:"menu3Image",
+            title:"Menu3 Image",
+            type:"image",
+            options:{
+              hotspot:true
+            }   
+        }),
+        defineField({
+            name: 'menu3Points',
+            title: 'Menu3 Points ',
+            type: 'array',
+            of: [{type: 'string'}]
         })
     ],
 

@@ -18,14 +18,15 @@ import showcase from '@/y/schemas/showcase'
 import Social from '@/components/Social'
 import { useMediaQuery } from 'react-responsive';
 import NewTesti from '@/components/NewTesti'
+import Faq from '@/components/Faq'
 
 
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({showcase, howItWorks, vs, pricing, testimonials, infoText, social}) {
+export default function Home({showcase, howItWorks, vs, pricing, testimonials, infoText, social, faq, newTestimonials}) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  
+
   return (
     <Fragment>
       <Header />
@@ -33,14 +34,16 @@ export default function Home({showcase, howItWorks, vs, pricing, testimonials, i
       <Badges />
       <HowItWorks howItWorks={howItWorks} />
       <Vs vs={vs} />
-      <PricingSection pricing={pricing} />
+      {/* <PricingSection pricing={pricing} /> */}
       <Testimonial testimonials={testimonials} />
       {/* <Testi testimonials={testimonials} /> */}
-      <NewTesti />
+      <NewTesti newTestimonials={newTestimonials}/>
       <InfoText infoText={infoText} />
-      <Records />
+      <Faq faq={faq}/>
+      {/* <Records />
       <Footer social={social}/>
-      <Social social={social}/>
+      <Social social={social}/> */}
+
     </Fragment>
   )
 }
@@ -77,6 +80,15 @@ export const getStaticProps = async() => {
   const social = await sanityClient.fetch(groq`
   *[_type == "social"][0]
   `)
+
+  const faq = await sanityClient.fetch(groq`
+  *[_type == "faq"][0]
+  `)
+
+  const newTestimonials = await sanityClient.fetch(groq`
+  *[_type == "newTestimonials"][0]
+  `)
+  
   return {
     props: {
       showcase,
@@ -85,7 +97,9 @@ export const getStaticProps = async() => {
       pricing,
       testimonials,
       infoText,
-      social
+      social,
+      faq,
+      newTestimonials,
     },
     revalidate:10,
   }

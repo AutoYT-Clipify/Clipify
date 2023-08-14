@@ -103,19 +103,19 @@ const Navbar = () => {
 								}
 							/> */}
 						</li>
-						<li
+						{/* <li
 						className="link"
 						>
 						<Link href="#pricing">Pricing</Link>
-							{/* <img
+							<img
 								alt=""
 								src={
 									selectedMenu === 'about'
 										? `/static/menuUpArrow.svg`
 										: `/static/icon-navArrowDown.svg`
 								}
-							/> */}
-						</li>
+							/>
+						</li> */}
 
 						<li className="link">
 							<Link href="#testimonials">Testimonials</Link>
