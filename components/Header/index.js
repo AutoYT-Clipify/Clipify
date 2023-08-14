@@ -137,9 +137,8 @@ const Navbar = () => {
 						}}
 						className="hidden lg:block"
 					>
-						<Link href={'https://t.me/Ritz_Expelee'}>
+
 							<PrimaryButton text="Get Started" />
-						</Link>
 					</motion.div>
 					<label className={`${styles.burger} lg:hidden`} htmlFor="burger">
 						<input
