@@ -20,7 +20,7 @@ const NewTesti = ({newTestimonials}) => {
                             <div className="style-7"><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6a1bf45c972_Joseph-Kania.png" loading="lazy" alt="" className="style-8" />
                                 <div className="style-9">
                                     <div className="style-10">Joseph Kania</div>
-                                    <div className="style-11">Owner</div>
+                                    <div className="style-11">Content Cretor</div>
                                 </div>
                             </div><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6fccc45ca11_5-rose-star.svg" loading="lazy" alt="" className="style-12" />
                         </div>
@@ -45,7 +45,7 @@ const NewTesti = ({newTestimonials}) => {
                                 <div className="style-31"><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6a14345c974_Clark-Brown.png" loading="lazy" alt="" className="style-32" />
                                     <div className="style-33">
                                         <div className="style-34">Clark Brown</div>
-                                        <div className="style-35">Freelance Web Developer</div>
+                                        <div className="style-35">Youtuber</div>
                                     </div>
                                 </div><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6fccc45ca11_5-rose-star.svg" loading="lazy" alt="" className="style-36" />
                             </div>
@@ -61,7 +61,7 @@ const NewTesti = ({newTestimonials}) => {
                                 <div className="style-45"><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e67c9b45c975_Talha.png" loading="lazy" alt="" className="style-46" />
                                     <div className="style-47">
                                         <div className="style-48">Talha R.</div>
-                                        <div className="style-49">Design Agency Owner</div>
+                                        <div className="style-49">Influencer</div>
                                     </div>
                                 </div><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6fccc45ca11_5-rose-star.svg" loading="lazy" alt="" className="style-50" />
                             </div>
@@ -88,7 +88,7 @@ const NewTesti = ({newTestimonials}) => {
                             <div className="style-68"><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6929145c977_David-Rodin.png" loading="lazy" alt="" className="style-69" />
                                 <div className="style-70">
                                     <div className="style-71">David Rodin</div>
-                                    <div className="style-72">Freelancer</div>
+                                    <div className="style-72">Musician</div>
                                 </div>
                             </div><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6fccc45ca11_5-rose-star.svg" loading="lazy" alt="" className="style-73" />
                         </div>
@@ -100,7 +100,7 @@ const NewTesti = ({newTestimonials}) => {
                             <div className="style-79"><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6c67145c978_Dorothea-Kelly.png" loading="lazy" alt="" className="style-80" />
                                 <div className="style-81">
                                     <div className="style-82">Dorothea Kelly</div>
-                                    <div className="style-83">Writer</div>
+                                    <div className="style-83">Youtuber</div>
                                 </div>
                             </div><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/6291e61a354f09336db9411b_5-white-rose-star.svg" loading="lazy" alt="" className="style-84" />
                         </div>
@@ -113,7 +113,7 @@ const NewTesti = ({newTestimonials}) => {
                                 <div className="style-92"><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e670e045c979_Nedyalko-Spas.png" loading="lazy" alt="" className="style-93" />
                                     <div className="style-94">
                                         <div className="style-95">Nedyalko Spas</div>
-                                        <div className="style-96">Ecommerce Owner</div>
+                                        <div className="style-96">Video Creator</div>
                                     </div>
                                 </div><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6fccc45ca11_5-rose-star.svg" loading="lazy" alt="" className="style-97" />
                             </div>
@@ -128,7 +128,7 @@ const NewTesti = ({newTestimonials}) => {
                             <div className="style-104"><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e680c245c97b_Zohaib-Zeeshan.png" loading="lazy" alt="" className="style-105" />
                                 <div className="style-106">
                                     <div className="style-107">Zohaib Zeeshan</div>
-                                    <div className="style-108">Freelance Web Developer</div>
+                                    <div className="style-108">Youtuber</div>
                                 </div>
                             </div><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6fccc45ca11_5-rose-star.svg" loading="lazy" alt="" className="style-109" />
                         </div>
@@ -141,7 +141,7 @@ const NewTesti = ({newTestimonials}) => {
                                 <div className="style-117"><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e61b5b45c97a_Bart-Gusta.png" loading="lazy" alt="" className="style-118" />
                                     <div className="style-119">
                                         <div className="style-120">Bart Gusta</div>
-                                        <div className="style-121">Upcoming Content Writer</div>
+                                        <div className="style-121">Upcoming Content creator</div>
                                     </div>
                                 </div><img src="https://global-uploads.webflow.com/627a1044a798e6627445c8d1/627a1045a798e6fccc45ca11_5-rose-star.svg" loading="lazy" alt="" className="style-122" />
                             </div>
