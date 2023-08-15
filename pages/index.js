@@ -35,7 +35,7 @@ export default function Home({showcase, howItWorks, vs, pricing, testimonials, i
       <HowItWorks howItWorks={howItWorks} />
       <Vs vs={vs} />
       {/* <PricingSection pricing={pricing} /> */}
-      <Testimonial testimonials={testimonials} />
+      {/* <Testimonial testimonials={testimonials} /> */}
       {/* <Testi testimonials={testimonials} /> */}
       <NewTesti newTestimonials={newTestimonials}/>
       <InfoText infoText={infoText} />
