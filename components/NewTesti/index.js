@@ -4,7 +4,7 @@ const NewTesti = ({newTestimonials}) => {
     let data = newTestimonials?.newTestimonialsData
     
     return (
-        <div className='mt-[10rem] lg:mt-0 px-[4rem] lg:px-0'>
+        <div className='mt-[10rem] lg:mt-[15rem] px-[4rem] lg:px-0'>
             <h2 className="flex justify-center text-center bold mt-[2rem] lg:mt-[0rem] text-[9rem] lg:text-[5rem] lg:mb-0 mb-[5rem]">
             {newTestimonials?.title}
             </h2>
