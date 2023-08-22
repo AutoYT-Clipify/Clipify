@@ -19,6 +19,7 @@ import Social from '@/components/Social'
 import { useMediaQuery } from 'react-responsive';
 import NewTesti from '@/components/NewTesti'
 import Faq from '@/components/Faq'
+import Brands from '@/components/Brands'
 
 
 
@@ -31,7 +32,7 @@ export default function Home({showcase, howItWorks, vs, pricing, testimonials, i
     <Fragment>
       <Header />
       <Showcase showcase={showcase}/>
-      <Badges />
+      <Brands />
       <HowItWorks howItWorks={howItWorks} />
       <Vs vs={vs} />
       {/* <PricingSection pricing={pricing} /> */}

@@ -17,7 +17,7 @@
 		rgba(16, 226, 249, 0.79) 114.51%,
 		rgba(146, 255, 255, 0.711) 214.96%
 	); */
-	background-color: #004bff;
+	background-color: #7B68EE;
 	/* box-shadow: 0 3px 30px 3px rgba(59, 59, 249, 0.6); */
 	transition: 0.3s ease-out all;
 	position: relative;
@@ -64,12 +64,9 @@
 	); */
 	transform: translateY(-3px);
 	transition: all .4s ease-out;
-	background: linear-gradient(
-		78.51deg,
-		rgba(13, 49, 69, 0.901) 9.96%,
-		rgba(16, 226, 249, 0.965) 114.51%,
-		rgba(146, 255, 255, 0.905) 214.96%
-	);
+	background-color: #fff;
+	color: #7B68EE;
+	border: 1px solid #7B68EE;
 }
 
 .button:active {
@@ -107,11 +104,7 @@
 .buttonInverted:hover {
 	transform: translateY(-3px);
 	transition: all .4s ease-out;
-	background: linear-gradient(
-		78.51deg,
-		rgba(13, 49, 69, 0.901) 9.96%,
-		rgba(16, 226, 249, 0.965) 114.51%,
-		rgba(146, 255, 255, 0.905) 214.96%
-	);
+	background-color: #fff;
+	color: #7B68EE;
 	
 }

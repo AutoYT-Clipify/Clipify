@@ -16,6 +16,22 @@ const Navbar = () => {
 	const [toogle, setToogle] = useState(false)
 	const router = useRouter()
 	const path = router.pathname
+	const [scrolled, setScrolled] = useState(false);
+
+	const handleScroll = () => {
+	  if (window.scrollY > 0) {
+		setScrolled(true);
+	  } else {
+		setScrolled(false);
+	  }
+	};
+  
+	useEffect(() => {
+	  window.addEventListener('scroll', handleScroll);
+	  return () => {
+		window.removeEventListener('scroll', handleScroll);
+	  };
+	}, []);
 
 	const handleMenuSelect = (menu) => {
 		if (menu === selectedMenu) {
@@ -47,7 +63,7 @@ const Navbar = () => {
 	return (
 		<Fragment>
 			<nav
-				className={`${styles.navbar}  w-full h-[15rem] lg:h-[6.2rem] flex justify-center items-center px-[5rem] lg:px-[0rem] py-[20px] z-50`}
+				className={`${ scrolled ? `${styles.navbar} ${styles.scroll}` : styles.navbar} w-full h-[15rem] lg:h-[6.2rem] flex justify-center items-center px-[5rem] lg:px-[0rem] py-[20px] z-50`}
 			>
 				<div className="flex w-[140rem] justify-between items-center py-[9px]">
 					<motion.div
@@ -135,7 +151,7 @@ const Navbar = () => {
 						transition={{
 							duration: 1.5,
 						}}
-						className="hidden lg:block"
+						className="hidden lg:block z-[110]"
 					>
 
 							<PrimaryButton text="Get Started" />
