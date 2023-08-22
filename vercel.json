@@ -1,8 +1,0 @@
-{
-    "redirects": [
-      {
-        "source": "/blog-to-video/:path*",
-        "destination": "https://blog-to-video.vercel.app/:path*"
-      }
-    ]
-  }
