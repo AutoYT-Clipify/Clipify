@@ -81,7 +81,7 @@ const Navbar = () => {
 							duration: 1.5,
 						}}
 					>
-						<Link href={'/'}>
+						<Link href={'#home'}>
 							<img
 								className="w-[30rem] lg:w-[100%]"
 								src="/static/yt-logo.png"
@@ -91,7 +91,7 @@ const Navbar = () => {
 					</motion.div>
 					<ul className="hidden lg:flex align-middle medium">
 						<li className="link" onClick={() => setSelectedMenu(null)}>
-							<Link href={'/'}>Home</Link>
+							<Link href={'#home'}>Home</Link>
 						</li>
 						<li
 							className="link"

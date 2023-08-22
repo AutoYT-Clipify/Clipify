@@ -50,7 +50,7 @@ const Showcase = ({ showcase }) => {
     return (
         <>
             {(
-                <div className={"bg-image mt-[25rem] lg:mt-[15.2rem] flex flex-col lg:flex-row  gap-[0rem] lg:gap-[rem]"}>
+                <div id="home" className={"bg-image mt-[25rem] lg:mt-[15.2rem] flex flex-col lg:flex-row  gap-[0rem] lg:gap-[rem]"}>
                     <div className="flex-1 self-center pr-[3rem]">
                         <h4 className="flex justify-left bold gradient text-[6rem] lg:text-[2rem] mt-[8rem] lg:mt-[0rem] mb-[-30px] lg:mb-[0px]">
                             {showcase?.title}
