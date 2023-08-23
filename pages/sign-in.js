@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const SignIn = () => {
+    const[url, setUrl] = useState(null)
      const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
-
+     
+ 
   const params = {
     client_id: '328356279394-rh2c1rmoutn1p0vrf5396gkfq0njv5gs.apps.googleusercontent.com',
-    redirect_uri: 'http://localhost:3000/sign-in',
+    redirect_uri: `${url}/sign-in`,
     response_type: 'token',
     scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
     include_granted_scopes: 'true',
@@ -40,6 +42,8 @@ const SignIn = () => {
     } else {
       console.log('No access token received.');
     }
+    const baseUrl = window.location.origin;
+    setUrl(baseUrl)
   }, []);
     return (
         <>
