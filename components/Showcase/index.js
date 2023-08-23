@@ -6,6 +6,7 @@ import Image from 'next/image'
 import ButtonInverted from "../PrimaryButton/ButtonInverted"
 import { Player } from 'video-react';
 import { ClipLoader } from 'react-spinners';
+import { useRouter } from 'next/router';
 
 const Showcase = ({ showcase }) => {
     const [i, setI] = useState(0);
@@ -15,6 +16,28 @@ const Showcase = ({ showcase }) => {
     const [showSpinner, setShowSpinner] = useState(false);
     const [showImage, setShowImage] = useState(false)
     const spinnerDuration = 3000; // Time in milliseconds
+    const router = useRouter();
+    const currentPathname = router.pathname;
+    // console.log(currentPathname, 'path')
+    const [title, setTitle] = useState('')
+    const [detail, setDetail] = useState('')
+
+    useEffect(() => {
+        if(currentPathname === '/text-to-tiktok') {
+            setTitle('Turn Your Text Prompt to the Next Viral Tiktok with AI');
+            setDetail('Turn Your Text Prompt into a Viral TikTok with Human-like voice over & Caption ready to post on all platforms! Supports all languages. Try For Free - no credit card required')
+        }else if (currentPathname === '/text-to-reels') {
+            setTitle('Turn Your Text Prompt to the Next Viral Reels with AI');
+            setDetail('Turn Your Text Prompt into a Viral Reels with Human-like voice over & Caption ready to post on all platforms! Supports all languages. Try For Free - no credit card required')
+        } else if (currentPathname === '/text-to-shorts') {
+            setTitle('Turn Your Text Prompt to the Next Viral Shorts with AI')  
+            setDetail('Turn Your Text Prompt into a Viral Shorts with Human-like voice over & Caption ready to post on all platforms! Supports all languages. Try For Free - no credit card required')
+        } else if (currentPathname === '/blog-to-video') {
+            setTitle('One Masterpiece, Multiple Masterposts. Dominate Search, Maximize Reach.')
+            setDetail('Turn Your blog into the next Viral Social media campaign with Human-like voice over & Caption ready to post on all platforms! Supports all languages. Try For Free - no credit card required.')
+        }
+    }, [])
+    
 
     useEffect(() => {
         const type = () => {
@@ -37,7 +60,7 @@ const Showcase = ({ showcase }) => {
     }, [i]);
 
     useEffect(() => {
-        if(showSpinner) {
+        if (showSpinner) {
             setTimeout(() => {
                 setShowSpinner(false);
                 setShowImage(true)
@@ -46,6 +69,19 @@ const Showcase = ({ showcase }) => {
 
 
     }, [showSpinner]);
+
+    useEffect(() => {
+        if (showImage) {
+            setTimeout(() => {
+                setShowSpinner(false);
+                setShowImage(false)
+                 setPlaceholder('');
+                setI(0);
+            }, 2000);
+        }
+
+
+    }, [showImage]);
 
     return (
         <>
@@ -56,10 +92,10 @@ const Showcase = ({ showcase }) => {
                             {showcase?.title}
                         </h4>
                         <h2 className="bold lg:pr-[6rem] text-[7rem] lg:text-[4rem] mt-[5rem] lg:mt-[0.7rem] leading-[8rem] lg:leading-[5rem]">
-                            {showcase?.subtitle}
+                            {title}
                         </h2>
                         <p className="regular  lg:pr-[6rem]  text-[6rem] mt-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]">
-                            {showcase?.detail}
+                            {detail}
                         </p>
                         <motion.div
                             initial={{
@@ -88,16 +124,26 @@ const Showcase = ({ showcase }) => {
                                     className="border lg:pl-2 pl-[4rem] h-z border-[#909090]/[.5] h-full w-full rounded-[.6rem] text-[4.5rem] lg:text-[1.6rem] lg:font-medium placeholder:ml-3 placeholder:text-[3.6rem] placeholder:text-[#909090] placeholder:lg:text-[1.6rem] placeholder:font-medium px-[1.3rem] focus:outline-0"
                                 />
                                 {/* {errors.email && <p className='text-[red] text-[3.5rem] lg:text-[1.3rem] absolute left-[1.5rem] lg:left-1 top-[17rem]  lg:top-[5.8rem]'>{errors.email?.message}</p>} */}
-                                <button
-                                    className="text-[4rem] medium lg:m-0 mr-[.5rem] mt-[.9rem] p-[1rem] w-[29rem] h-[13.4rem] lg:text-[1.5rem] lg:w-[15.6rem] lg:h-[4.5rem] bg-[#fff] text-[#7B68EE] rounded-[2rem] lg:rounded-[.5rem] absolute right-[.5rem] top-[.35rem]"
-                                    type='submit'
-                                // onClick={handleSubmit}
-                                >
-                                    Generate →
-                                </button>
+                                <Link href={'/get-started'}>
+                                    <button
+                                        className="text-[4rem] medium lg:m-0 mr-[.5rem] mt-[.9rem] p-[1rem] w-[29rem] h-[13.4rem] lg:text-[1.5rem] lg:w-[15.6rem] lg:h-[4.5rem] bg-[#fff] text-[#7B68EE] rounded-[2rem] lg:rounded-[.5rem] absolute right-[.5rem] top-[.35rem]"
+                                        type='submit'
+                                    // onClick={handleSubmit}
+                                    >
+                                        Generate →
+                                    </button>
+                                </Link>
+
                             </form>
-                            {/* <ButtonInverted text="AI Video" /> */}
+
                         </motion.div>
+                        <div className='mt-[4rem]'>
+                            <Link href="/get-started">
+                                <PrimaryButton text="Create Video" />
+                            </Link>
+
+                        </div>
+
                     </div>
                     {/* Image */}
                     <motion.div

@@ -25,7 +25,7 @@ import Brands from '@/components/Brands'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function TextToVideo({showcase2, howItWorks2, vs, pricing, testimonials, infoText, social, faq, newTestimonials}) {
+export default function TextToTikTok({showcase2, howItWorks2, vs, pricing, testimonials, infoText, social, faq, newTestimonials}) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
@@ -40,7 +40,7 @@ export default function TextToVideo({showcase2, howItWorks2, vs, pricing, testim
       {/* <Testi testimonials={testimonials} /> */}
       <NewTesti newTestimonials={newTestimonials}/>
       <InfoText infoText={infoText} />
-      <Faq faq={faq}/>
+      {/* <Faq faq={faq}/> */}
       {/* <Records />
       <Footer social={social}/>
       <Social social={social}/> */}

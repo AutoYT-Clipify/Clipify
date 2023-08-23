@@ -4,6 +4,7 @@ const Brands = () => {
 
   return (
     <div className='mt-[10rem]'>
+        <h4 className='bold text-center text-[2rem] mb-[5rem]'>Easily Integrates With</h4>
         <div className='flex gap-[10rem] justify-center'>
             <div>
                 <img src="/static/brands/shopify.png" alt="shopify" />

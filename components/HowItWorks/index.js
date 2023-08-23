@@ -36,12 +36,12 @@ const HowItWorks = ({ howItWorks }) => {
                     <h4 className="flex justify-center bold gradient text-[5rem] lg:text-[2.5rem] mb-[-30px] lg:mb-[-10px]">
                         How it works
                     </h4>
-                    <h2 className="flex justify-center bold mt-[2rem]  text-center lg:mt-[0rem] text-[9rem] lg:text-[5rem]">
+                    {/* <h2 className="flex justify-center bold mt-[2rem]  text-center lg:mt-[0rem] text-[9rem] lg:text-[5rem]">
                        {howItWorks?.title}
                     </h2>
                     <p className='regular justify-center text-center m-auto lg:w-[55%]  lg:pr-[6rem]  text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>
                         {howItWorks?.subtitle}
-                    </p>
+                    </p> */}
                     {howItWorksData?.map((i) => (
                         <div key={i?.id} className={i?.id % 2 !== 0 ? `flex flex-col lg:flex-row justify-center gap-[0rem] my-[10rem]` : `flex flex-col lg:flex-row-reverse justify-center gap-[0rem] my-[3rem]`}>
                             <div className={i?.id === 2 ? 'lg:ml-[8rem] flex-1' : 'flex-1'}>

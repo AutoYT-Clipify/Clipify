@@ -1,12 +1,31 @@
-import React from 'react'
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react'
 
 const NewTesti = ({newTestimonials}) => {
     let data = newTestimonials?.newTestimonialsData
-    
+    const router = useRouter();
+    const currentPathname = router.pathname;
+    console.log(currentPathname, 'path')
+    const [title, setTitle] = useState('')
+    const [detail, setDetail] = useState('')
+
+    useEffect(() => {
+        if(currentPathname === '/text-to-tiktok') {
+            setTitle('Turn Your Text to TikTok Videos to Dominate Search, Maximize Reach.I');
+            
+        }else if (currentPathname === '/text-to-reels') {
+            setTitle('Turn Your Text to Reels to Dominate Search, Maximize Reach.');
+        } else if (currentPathname === '/text-to-shorts') {
+            setTitle('Turn Your Text to Shorts to Dominate Search, Maximize Reach.')  
+        } else if (currentPathname === '/blog-to-video') {
+            setTitle('Turn Your Blogs to Videos to Dominate Search, Maximize Reach.')
+        }
+    }, [])
+
     return (
         <div id="testimonials" className='mt-[10rem] lg:mt-[15rem] px-[4rem] lg:px-0'>
             <h2 className="flex justify-center text-center bold mt-[2rem] lg:mt-[0rem] text-[9rem] lg:text-[5rem] lg:mb-0 mb-[5rem]">
-            {newTestimonials?.title}
+            {title}
             </h2>
             <p className='regular justify-center text-center m-auto lg:w-[55%]  lg:pr-[6rem]  text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>
             {newTestimonials?.subtitle}

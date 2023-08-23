@@ -25,20 +25,20 @@ import Brands from '@/components/Brands'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function BlogToVideo({showcase, howItWorks, vs, pricing, testimonials, infoText, social, faq, newTestimonials}) {
+export default function TextToReels({showcase2, howItWorks2, vs, pricing, testimonials, infoText, social, faq, newTestimonials}) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <Fragment>
       <Header />
-      <Showcase showcase={showcase}/>
-      <Brands />
-      <HowItWorks howItWorks={howItWorks} />
+      <Showcase showcase={showcase2}/>
+      <Badges />
+      <HowItWorks howItWorks={howItWorks2} />
       <Vs vs={vs} />
       {/* <PricingSection pricing={pricing} /> */}
       {/* <Testimonial testimonials={testimonials} /> */}
       {/* <Testi testimonials={testimonials} /> */}
-      <NewTesti newTestimonials={newTestimonials}/>a
+      <NewTesti newTestimonials={newTestimonials}/>
       <InfoText infoText={infoText} />
       {/* <Faq faq={faq}/> */}
       {/* <Records />
@@ -51,16 +51,16 @@ export default function BlogToVideo({showcase, howItWorks, vs, pricing, testimon
 
 export const getStaticProps = async() => {
 
-  const showcase = await sanityClient.fetch(groq`
-  *[_type == "showcase"]{
+  const showcase2 = await sanityClient.fetch(groq`
+  *[_type == "showcase2"]{
     _id,
     title,
     subtitle,
     detail,
   }[0]
   `)
-  const howItWorks = await sanityClient.fetch(groq`
-  *[_type == "howItWorks"][0]
+  const howItWorks2 = await sanityClient.fetch(groq`
+  *[_type == "howItWorks2"][0]
   `)
   const vs = await sanityClient.fetch(groq`
   *[_type == "vs"][0]
@@ -92,8 +92,8 @@ export const getStaticProps = async() => {
   
   return {
     props: {
-      showcase,
-      howItWorks,
+      showcase2,
+      howItWorks2,
       vs,
       pricing,
       testimonials,
