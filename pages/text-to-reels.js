@@ -25,7 +25,7 @@ import Brands from '@/components/Brands'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function TextToReels({showcase2, howItWorks2, vs, pricing, testimonials, infoText, social, faq, newTestimonials}) {
+export default function TextToReels({showcase2, howItWorks2, vs2, pricing, testimonials, infoText, social, faq, newTestimonials}) {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
@@ -34,7 +34,7 @@ export default function TextToReels({showcase2, howItWorks2, vs, pricing, testim
       <Showcase showcase={showcase2}/>
       <Badges />
       <HowItWorks howItWorks={howItWorks2} />
-      <Vs vs={vs} />
+      <Vs vs={vs2} />
       {/* <PricingSection pricing={pricing} /> */}
       {/* <Testimonial testimonials={testimonials} /> */}
       {/* <Testi testimonials={testimonials} /> */}
@@ -62,8 +62,8 @@ export const getStaticProps = async() => {
   const howItWorks2 = await sanityClient.fetch(groq`
   *[_type == "howItWorks2"][0]
   `)
-  const vs = await sanityClient.fetch(groq`
-  *[_type == "vs"][0]
+  const vs2 = await sanityClient.fetch(groq`
+  *[_type == "vs2"][0]
   `)
 
   const pricing = await sanityClient.fetch(groq`
@@ -94,7 +94,7 @@ export const getStaticProps = async() => {
     props: {
       showcase2,
       howItWorks2,
-      vs,
+      vs2,
       pricing,
       testimonials,
       infoText,

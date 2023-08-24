@@ -31,6 +31,10 @@ export default function BlogToVideo({showcase, howItWorks, vs, pricing, testimon
   return (
     <Fragment>
       <Header />
+      <div className="fb-customerchat" 
+         attribution="setup_tool" 
+         page_id="YOUR_PAGE_ID">
+    </div>
       <Showcase showcase={showcase}/>
       <Brands />
       <HowItWorks howItWorks={howItWorks} />
@@ -38,7 +42,7 @@ export default function BlogToVideo({showcase, howItWorks, vs, pricing, testimon
       {/* <PricingSection pricing={pricing} /> */}
       {/* <Testimonial testimonials={testimonials} /> */}
       {/* <Testi testimonials={testimonials} /> */}
-      <NewTesti newTestimonials={newTestimonials}/>a
+      <NewTesti newTestimonials={newTestimonials}/>
       <InfoText infoText={infoText} />
       {/* <Faq faq={faq}/> */}
       {/* <Records />

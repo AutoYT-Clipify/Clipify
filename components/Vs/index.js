@@ -1,14 +1,32 @@
 import { vsData } from '@/constants'
-import React from 'react'
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react'
 
 const Vs = ({ vs }) => {
+    const router = useRouter();
+    const currentPathname = router.pathname;
+    console.log(currentPathname, 'path')
+    const [title, setTitle] = useState('')
+    const [detail, setDetail] = useState('')
+
+    useEffect(() => {
+        if(currentPathname === '/text-to-tiktok') {
+            setTitle('Turn From A Content Editor to A Creator. Save 20+ Hrs/Week. Get Ahead.');          
+        }else if (currentPathname === '/text-to-reels') {
+            setTitle('Turn From A Content Editor to A Creator. Save 20+ Hrs/Week. Get Ahead.');
+        } else if (currentPathname === '/text-to-shorts') {
+            setTitle('Turn From A Content Editor to A Creator. Save 20+ Hrs/Week. Get Ahead.')  
+        } else if (currentPathname === '/blog-to-video') {
+          setTitle('Turn Your Blogs to Videos to Dominate Search, Maximize Reach.')
+        }
+    }, [])
 
     return (
         <>
             { (
                 <div id="solutions" className="mt-[15rem] lg:mt-[19.5rem] ">
                     <h2 className="flex justify-center bold mt-[2rem] lg:mt-[0rem] text-[9rem] lg:text-[4rem] lg:w-[70%] lg:m-auto text-center">
-                       {vs?.title}
+                       {title}
                     </h2>
                     <p className='regular justify-center text-center m-auto lg:w-[55%]  lg:pr-[6rem]  text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>
                        {vs?.subtitle}

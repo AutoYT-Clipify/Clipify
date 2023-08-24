@@ -11,7 +11,7 @@ const SelectGender = () => {
   return (
     <div>
       <Gender />
-      <div className='flex justify-center mt-[8rem] gap-[2rem]'>
+      <div className='flex justify-center mt-[28rem] gap-[2rem]'>
 
       <button
       onClick={goBack}

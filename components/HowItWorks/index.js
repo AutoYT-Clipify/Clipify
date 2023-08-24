@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { urlFor } from '@/sanity'
+import { useRouter } from 'next/router';
 
 const HowItWorks = ({ howItWorks }) => {
+
+    const router = useRouter();
+    const currentPathname = router.pathname;
+    const[blog, setBlog] = useState(false)
+
+    useEffect(() => {
+        if (currentPathname === '/blog-to-video') {
+            setBlog(true)
+        }else {
+            setBlog(false)
+        }
+    }, [])
 
     const howItWorksData = [
         {
@@ -42,38 +55,45 @@ const HowItWorks = ({ howItWorks }) => {
                     <p className='regular justify-center text-center m-auto lg:w-[55%]  lg:pr-[6rem]  text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>
                         {howItWorks?.subtitle}
                     </p> */}
-                    {howItWorksData?.map((i) => (
-                        <div key={i?.id} className={i?.id % 2 !== 0 ? `flex flex-col lg:flex-row justify-center gap-[0rem] my-[10rem]` : `flex flex-col lg:flex-row-reverse justify-center gap-[0rem] my-[3rem]`}>
-                            <div className={i?.id === 2 ? 'lg:ml-[8rem] flex-1' : 'flex-1'}>
-                                <h2 className="inline-block  bold mt-[2rem] lg:mt-[0rem] text-[8rem] lg:text-[3.5rem]">
-                                    {i?.title}
-                                </h2>
-                                <p className='regular inline-block lg:pr-[6rem]  text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>
-                                    {i?.description}
-                                </p>
-                                {
-                                    i?.points?.map((point) => (
-                                        <div key={point} className='flex gap-[3rem] lg:gap-2'>
-                                            <img className='w-[7%] lg:w-[4.5%] lg:mt-[2rem]' src="/tick.svg" />
-                                            <p className='flex-1 regular inline-block lg:pr-[6rem] mt-[4rem] text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>{point}</p>
-                                        </div>
-                                    ))
-                                }
+                    {howItWorksData?.map((i, index) => {
+                        if(blog && index === 0) {
+                            return 
+                        } else {
+                            return (
+                                <div key={i?.id} className={i?.id % 2 !== 0 ? `flex flex-col lg:flex-row justify-center gap-[0rem] my-[10rem]` : `flex flex-col lg:flex-row-reverse justify-center gap-[0rem] my-[3rem]`}>
+                                <div className={i?.id === 2 ? 'lg:ml-[8rem] flex-1' : 'flex-1'}>
+                                    <h2 className="inline-block  bold mt-[2rem] lg:mt-[0rem] text-[8rem] lg:text-[3.5rem]">
+                                        {i?.title}
+                                    </h2>
+                                    <p className='regular inline-block lg:pr-[6rem]  text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>
+                                        {i?.description}
+                                    </p>
+                                    {
+                                        i?.points?.map((point) => (
+                                            <div key={point} className='flex gap-[3rem] lg:gap-2'>
+                                                <img className='w-[7%] lg:w-[4.5%] lg:mt-[2rem]' src="/tick.svg" />
+                                                <p className='flex-1 regular inline-block lg:pr-[6rem] mt-[4rem] text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>{point}</p>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                                <motion.div
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5 }}
+                                    variants={{
+                                        visible: { opacity: 1, scale: 1 },
+                                        hidden: { opacity: 0, scale: 0 }
+                                    }}
+                                    className="lg:mt-0 mt-[15rem] flex-1">
+                                    <img src={urlFor(i?.image)?.url() || ''} className={i?.id === 2 ? `h-[100%] lg:w-[130rem] rounded-[1rem]` : `h-[100%] lg:w-[100rem] rounded-[1rem]`} />
+                                </motion.div>
                             </div>
-                            <motion.div
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5 }}
-                                variants={{
-                                    visible: { opacity: 1, scale: 1 },
-                                    hidden: { opacity: 0, scale: 0 }
-                                }}
-                                className="lg:mt-0 mt-[15rem] flex-1">
-                                <img src={urlFor(i?.image)?.url() || ''} className={i?.id === 2 ? `h-[100%] lg:w-[130rem] rounded-[1rem]` : `h-[100%] lg:w-[100rem] rounded-[1rem]`} />
-                            </motion.div>
-                        </div>
-                    ))}
+                            )
+                        }
+                       
+})}
                 </div>
             )}
         </>

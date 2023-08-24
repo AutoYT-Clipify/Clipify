@@ -21,17 +21,26 @@ const Showcase = ({ showcase }) => {
     // console.log(currentPathname, 'path')
     const [title, setTitle] = useState('')
     const [detail, setDetail] = useState('')
+    const [first, setFirst] = useState(null)
+    const [searchText, setSearchText] = useState(null);
+
 
     useEffect(() => {
         if(currentPathname === '/text-to-tiktok') {
+            setSearchText('Create a TikTok about…')
+            setFirst('TiktokGPT is finally here. Create 30 viral shorts in 30 seconds. Animated shorts.')
             setTitle('Turn Your Text Prompt to the Next Viral Tiktok with AI');
-            setDetail('Turn Your Text Prompt into a Viral TikTok with Human-like voice over & Caption ready to post on all platforms! Supports all languages. Try For Free - no credit card required')
+            setDetail('Turn Your Text into a Viral Tiktok with Human-like voice over & Caption ready to post on all platforms! Supports all languages.')
         }else if (currentPathname === '/text-to-reels') {
+            setSearchText('Create a Reel about….')
+            setFirst('ReelGPT is finally here. Create 30 viral shorts in 30 seconds. Animated shorts.')
             setTitle('Turn Your Text Prompt to the Next Viral Reels with AI');
-            setDetail('Turn Your Text Prompt into a Viral Reels with Human-like voice over & Caption ready to post on all platforms! Supports all languages. Try For Free - no credit card required')
+            setDetail('Turn Your Text into a Viral Reels with Human-like voice over & Caption ready to post on all platforms! Supports all languages.')
         } else if (currentPathname === '/text-to-shorts') {
+            setSearchText('Create a Short about….')
+            setFirst('ShortGPT is finally here. Create 30 viral shorts in 30 seconds. Animated shorts.')
             setTitle('Turn Your Text Prompt to the Next Viral Shorts with AI')  
-            setDetail('Turn Your Text Prompt into a Viral Shorts with Human-like voice over & Caption ready to post on all platforms! Supports all languages. Try For Free - no credit card required')
+            setDetail('Turn Your Text into a Viral Shorts with Human-like voice over & Caption ready to post on all platforms! Supports all languages.')
         } else if (currentPathname === '/blog-to-video') {
             setTitle('One Masterpiece, Multiple Masterposts. Dominate Search, Maximize Reach.')
             setDetail('Turn Your blog into the next Viral Social media campaign with Human-like voice over & Caption ready to post on all platforms! Supports all languages. Try For Free - no credit card required.')
@@ -89,7 +98,7 @@ const Showcase = ({ showcase }) => {
                 <div id="home" className={"bg-image mt-[25rem] lg:mt-[15.2rem] flex flex-col lg:flex-row  gap-[0rem] lg:gap-[rem]"}>
                     <div className="flex-1 self-center pr-[3rem]">
                         <h4 className="flex justify-left bold gradient text-[6rem] lg:text-[2rem] mt-[8rem] lg:mt-[0rem] mb-[-30px] lg:mb-[0px]">
-                            {showcase?.title}
+                            {first ? first : showcase?.title}
                         </h4>
                         <h2 className="bold lg:pr-[6rem] text-[7rem] lg:text-[4rem] mt-[5rem] lg:mt-[0.7rem] leading-[8rem] lg:leading-[5rem]">
                             {title}
@@ -118,7 +127,7 @@ const Showcase = ({ showcase }) => {
                                 className="ml-[2em] lg:ml-0 w-[105rem] h-[16rem] lg:w-[53.4rem] lg:h-[5.4rem] flex relative mt-[8rem] lg:mt-[1.2rem] z-[20]">
                                 <input
                                     type='email'
-                                    placeholder="Type or paste any blog to convert into any video"
+                                    placeholder={searchText ? searchText : "Type or paste any blog to convert into any video"}
                                     // {...register("email", { required: "Email Address is required" })}
                                     // aria-invalid={errors.email ? "true" : "false"}
                                     className="border lg:pl-2 pl-[4rem] h-z border-[#909090]/[.5] h-full w-full rounded-[.6rem] text-[4.5rem] lg:text-[1.6rem] lg:font-medium placeholder:ml-3 placeholder:text-[3.6rem] placeholder:text-[#909090] placeholder:lg:text-[1.6rem] placeholder:font-medium px-[1.3rem] focus:outline-0"
@@ -141,7 +150,7 @@ const Showcase = ({ showcase }) => {
                             <Link href="/get-started">
                                 <PrimaryButton text="Create Video" />
                             </Link>
-
+                            <p className='text-[#5C5C5C] mt-[1rem] ml-[2.5rem] regular text-[1.2rem]'>No Credit Card Required</p>
                         </div>
 
                     </div>
