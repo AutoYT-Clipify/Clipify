@@ -1,3 +1,4 @@
+import { signInWithGooglePopup } from '@/utils/firebase.utils';
 import React, { useEffect, useState } from 'react'
 
 const SignIn = () => {
@@ -13,6 +14,13 @@ const SignIn = () => {
     include_granted_scopes: 'true',
     state: 'pass-through value',
   };
+
+  const signInWithGoogle = async () => {
+       await signInWithGooglePopup();
+        // setCurrentUser(user);
+
+
+      }
 
      const handleSubmit = () => {
     const form = document.createElement('form');
@@ -64,7 +72,7 @@ const SignIn = () => {
                                         <div style={{ boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
                                             <h2 className="bold text-[3rem] text-left mb-[4rem]">Sign Up to get your Post</h2>
                                             <div style={{ flexWrap: 'nowrap', display: 'flex', WebkitBoxAlign: 'center', alignItems: 'center', gap: '16px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
-                                                <div style={{ flex: '1 1 0%', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}><button onClick={handleSubmit} type="button" style={{ padding: '0px', cursor: 'pointer', display: 'flex', WebkitBoxAlign: 'center', alignItems: 'center', WebkitBoxPack: 'center', justifyContent: 'center', position: 'relative', borderRadius: '8px', color: 'rgb(3, 3, 3)', backgroundColor: 'rgba(0, 0, 0, 0)', boxShadow: 'none', border: '0.8px solid rgb(232, 232, 232)', transition: 'border 0.3s ease 0s', width: '100%', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', appearance: 'none', textTransform: 'none', overflow: 'visible', fontFamily: 'Gelion, Helvetica, "Helvetica Neue", Arial', fontSize: '14px', lineHeight: '16.1px', margin: '0px' }}>
+                                                <div style={{ flex: '1 1 0%', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}><button onClick={signInWithGoogle} type="button" style={{ padding: '0px', cursor: 'pointer', display: 'flex', WebkitBoxAlign: 'center', alignItems: 'center', WebkitBoxPack: 'center', justifyContent: 'center', position: 'relative', borderRadius: '8px', color: 'rgb(3, 3, 3)', backgroundColor: 'rgba(0, 0, 0, 0)', boxShadow: 'none', border: '0.8px solid rgb(232, 232, 232)', transition: 'border 0.3s ease 0s', width: '100%', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', appearance: 'none', textTransform: 'none', overflow: 'visible', fontFamily: 'Gelion, Helvetica, "Helvetica Neue", Arial', fontSize: '14px', lineHeight: '16.1px', margin: '0px' }}>
                                                     <div style={{ padding: '12px 16px', display: 'flex', WebkitBoxAlign: 'center', alignItems: 'center', WebkitBoxPack: 'center', justifyContent: 'center', boxSizing: 'border-box', whiteSpace: 'nowrap', visibility: 'visible', gap: '12px', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}><img src="https://app.uizard.io/static/media/google.c17df322b408a9f3f31c4bc735c95e04.svg" style={{ boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', borderStyle: 'none' }} />
                                                         <div style={{ margin: '0px', fontSize: '14px', lineHeight: '16px', letterSpacing: '-0.1px', textAlign: 'center', fontWeight: 500, color: 'rgb(3, 3, 3)', textTransform: 'none', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>Sign up with Google</div>
                                                     </div>
