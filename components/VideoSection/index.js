@@ -10,7 +10,7 @@ const VideoSection = () => {
     <div>
       <List style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
         {["Videos"].map((text, index) => (
-          <Cards />
+          <Cards key={index}/>
         ))}
       </List>
     </div>
