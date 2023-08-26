@@ -12,7 +12,7 @@ const GetStarted = () => {
   return (
     <div>
       <Sm />
-      <div className='flex justify-center mt-[18rem] gap-[2rem]'>
+      <div className='flex justify-center mt-[8rem] mb-[2rem] gap-[2rem]'>
 
         <button
           onClick={goBack}

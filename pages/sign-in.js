@@ -1,8 +1,9 @@
-import { signInWithGooglePopup } from '@/utils/firebase.utils';
+import { getCurrentUser, signInWithGooglePopup } from '@/utils/firebase.utils';
 import React, { useEffect, useState } from 'react'
 
 const SignIn = () => {
     const[url, setUrl] = useState(null)
+    const [user, setUser] = useState(null)
      const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
      
  
@@ -18,9 +19,27 @@ const SignIn = () => {
   const signInWithGoogle = async () => {
        await signInWithGooglePopup();
         // setCurrentUser(user);
+        const email = userGet();
+        setUser(email);
 
 
       }
+
+      const userGet = async() => {
+        const user = await getCurrentUser()
+        console.log(user)
+        return user?.email;
+      }
+
+      useEffect(() => {
+       if(user) {
+        window.open('/dashboard')
+       }
+      },[user])
+
+
+
+console.log(user, 'user')
 
      const handleSubmit = () => {
     const form = document.createElement('form');
@@ -55,14 +74,14 @@ const SignIn = () => {
   }, []);
     return (
         <>
-            <div style={{ cursor: 'auto', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', fontFamily: 'Gelion, Helvetica, "Helvetica Neue", Arial', lineHeight: '21px', fontSize: '14px', color: 'rgb(3, 3, 3)', fontVariantLigatures: 'no-common-ligatures', letterSpacing: '-0.1px', backgroundColor: 'rgb(242, 242, 242)', height: '707.2px', margin: '0px' }}><noscript style={{ boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
+            <div style={{ cursor: 'auto', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', fontFamily: 'Gelion, Helvetica, "Helvetica Neue", Arial', lineHeight: '21px', fontSize: '14px', color: 'rgb(3, 3, 3)', fontVariantLigatures: 'no-common-ligatures', letterSpacing: '-0.1px', backgroundColor: 'rgb(242, 242, 242)', height: '100vh', margin: '0px' }}><noscript style={{ boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
                 <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBRJKGT&gtm_auth=&gtm_preview=&gtm_cookies_win=x" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} id="tag-manager"></iframe></noscript><noscript style={{ boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>You need to enable JavaScript to run this app.</noscript>
-                <div style={{ boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', position: 'relative', zIndex: 1, height: '707.2px' }}>
-                    <div style={{ height: '707.2px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', height: '707.2px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
-                            <div style={{ minWidth: '0px', width: '50%', position: 'relative', display: 'flex', flexDirection: 'column', WebkitBoxAlign: 'center', alignItems: 'center', WebkitBoxPack: 'center', justifyContent: 'center', height: '707.2px', backgroundColor: 'rgb(254, 254, 254)', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
+                <div style={{ boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', position: 'relative', zIndex: 1, height: '100%' }}>
+                    <div style={{ height: '100%', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', height: '100%', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
+                            <div style={{ minWidth: '0px', width: '50%', position: 'relative', display: 'flex', flexDirection: 'column', WebkitBoxAlign: 'center', alignItems: 'center', WebkitBoxPack: 'center', justifyContent: 'center', height: '100vh', backgroundColor: 'rgb(254, 254, 254)', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
                                 <div style={{ padding: '50px', position: 'absolute', top: '0px', left: '0px', width: '100%', display: 'flex', flexDirection: 'row', WebkitBoxAlign: 'center', alignItems: 'center', WebkitBoxPack: 'justify', justifyContent: 'space-between', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}><a href="#" style={{ display: 'block', position: 'relative', color: 'rgb(3, 3, 3)', textDecoration: 'none solid rgb(3, 3, 3)', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', backgroundColor: 'rgba(0, 0, 0, 0)' }}>
-                                    <div style={{ display: 'block', position: 'relative', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}><img size="3" src="/static/yt-logo.png" alt="Uizard" style={{ display: 'none', height: '30px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', borderStyle: 'none' }} /><img size="3" src="/static/yt-logo.png" alt="Uizard" style={{ display: 'block', height: '30px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', borderStyle: 'none' }} /></div>
+                                    <div style={{ display: 'block', position: 'relative', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}><img size="3" src="/static/yt-logo.png" alt="Uizard" style={{ display: 'none', height: '30px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', borderStyle: 'none' }} /><img size="5" src="/logo.png" alt="Uizard" style={{ display: 'block', height: '80px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', borderStyle: 'none' }} /></div>
                                 </a>
                                     
                                 </div>
@@ -83,8 +102,8 @@ const SignIn = () => {
                                     </form>
                                 </div>
                             </div>
-                            <div style={{ display: 'block', minWidth: '0px', width: '50%', height: '707.2px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
-                                <div style={{ display: 'flex', height: '707.2px', position: 'relative', flexDirection: 'column', WebkitBoxAlign: 'center', alignItems: 'center', WebkitBoxPack: 'justify', justifyContent: 'space-between', padding: '150px 0px 100px', overflow: 'hidden', background: 'rgba(0, 0, 0, 0) url("/signin-bg.jpg")', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
+                            <div style={{ display: 'block', minWidth: '0px', width: '50%', height: '100vh', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
+                                <div style={{ display: 'flex', height: '707.2px', position: 'relative', flexDirection: 'column', WebkitBoxAlign: 'center', alignItems: 'center', WebkitBoxPack: 'justify', justifyContent: 'space-between', padding: '150px 0px 100px', overflow: 'hidden', background: 'rgba(0, 0, 0, 0) url("/signin-bg.jpg")', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', height:'100vh' }}>
                                     <div style={{ width: '184px', height: '60px', marginBottom: '16px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}><a href="https://www.capterra.com/reviews/170822/Uizard?utm_source=vendor&amp;utm_medium=badge&amp;utm_campaign=capterra_reviews_badge" target="_blank" rel="noreferrer" style={{ boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', backgroundColor: 'rgba(0, 0, 0, 0)' }}><img alt="capterra logo" src="https://assets.capterra.com/badge/686709342337db91a58091b16c44513d.svg?v=2118363&amp;p=170822" style={{ boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', borderStyle: 'none' }} /></a></div>
                                     <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', WebkitBoxAlign: 'center', alignItems: 'center', WebkitBoxPack: 'justify', justifyContent: 'space-between', width: '520px', maxWidth: 'calc(100% - 100px)', margin: '20px 0px 74px', background: 'rgba(255, 255, 255, 0.5) none repeat scroll 0% 0% / auto padding-box border-box', border: '0.8px solid rgb(255, 255, 255)', borderRadius: '24px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}>
                                         <div style={{ display: 'flex', flexDirection: 'column', WebkitBoxAlign: 'center', alignItems: 'center', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased' }}><img src="/man.png" alt="avatar" style={{ position: 'relative', display: 'block', width: '60px', height: '60px', margin: '30px auto 0px', boxSizing: 'border-box', textRendering: 'optimizelegibility', WebkitFontSmoothing: 'antialiased', borderStyle: 'none' }} />

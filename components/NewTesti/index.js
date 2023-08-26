@@ -24,7 +24,7 @@ const NewTesti = ({newTestimonials}) => {
 
     return (
         <div id="testimonials" className='mt-[10rem] lg:mt-[15rem] px-[4rem] lg:px-0'>
-            <h2 className="flex justify-center text-center bold mt-[2rem] lg:mt-[0rem] text-[9rem] lg:text-[5rem] lg:mb-0 mb-[5rem]">
+            <h2 className="flex w-[80%] m-auto justify-center text-center bold mt-[2rem] lg:mt-[0rem] text-[9rem] lg:text-[5rem] lg:mb-0 mb-[5rem]">
             {title}
             </h2>
             <p className='regular justify-center text-center m-auto lg:w-[55%]  lg:pr-[6rem]  text-[5rem] lg:mt-[2rem] lg:text-[1.8rem] text-[#5C5C5C]'>
