@@ -193,7 +193,7 @@ const Showcase = ({ showcase }) => {
                                     <>
                                         {showImage && (
                                             <img
-                                                src="/husky.svg"
+                                                src="/husky.png"
                                                 alt="Your Image"
                                                 className="w-[40%] h-[100%] z-[100]" // Adjust image dimensions and styling
                                             />

@@ -83,8 +83,8 @@ const Navbar = () => {
 					>
 						<Link href={'#home'}>
 							<img
-								className="w-[30rem] lg:w-[100%]"
-								src="/static/yt-logo.png"
+								className="w-[7rem]"
+								src="/logo.png"
 								alt="Logo"
 							/>
 						</Link>
