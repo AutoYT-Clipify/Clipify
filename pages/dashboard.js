@@ -45,7 +45,7 @@ const menuItems = [
 export default function Dashboard() {
 
   const handleOpenStripe = () => {
-    window.open('https://buy.stripe.com/test_5kAdSHeWWdkCdrifYY')
+    window.open('https://buy.stripe.com/8wMg1n04F4MHbC09AC')
   }
 
   return (
