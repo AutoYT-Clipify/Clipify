@@ -47,7 +47,7 @@ const Sm = () => {
                 <div  onClick={() => handleClick('shorts')}  className={selectedData.includes('shorts') ? 'w-[20%] border-solid border-[2px] border-[#7B68EE] rounded-2xl py-[3rem] px-[0rem]' : 'w-[20%] border-solid border-[2px] border-[#CECECE] rounded-2xl py-[3rem] px-[0rem]'}>
                     <div className='flex gap-[1rem] justify-center'>
                     <div  className={ 'w-[50%] p-[1rem]'}>
-                    <img className='m-auto w-[50%]' src="/static/sm/youtube.png" />
+                    <img className='m-auto w-[50%]' src="/static/sm/shorts.png" />
                         <h4 className='bold mt-[0.5rem] text-[2rem] text-center'>Shorts</h4>
                     </div>
                     </div>
