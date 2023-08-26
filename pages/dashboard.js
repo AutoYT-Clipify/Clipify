@@ -111,7 +111,7 @@ export default function Dashboard() {
                       fontStyle: "Raleway",
                       fontSize: "15px",
                       color: "black",
-                      fontWeight: "bold",
+                      fontWeight: "500",
                     },
                   }}
                 />
@@ -128,9 +128,9 @@ export default function Dashboard() {
                 sx={{
                   ".MuiListItemText-primary": {
                     fontStyle: "Raleway",
-                    fontSize: "12px",
+                    fontSize: "15px",
                     color: "black",
-                    fontWeight: "300",
+                    fontWeight: "500",
                   },
                 }}
               />
