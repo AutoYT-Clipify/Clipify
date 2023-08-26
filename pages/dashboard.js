@@ -54,7 +54,7 @@ export default function Dashboard() {
       <Appbar drawerWidth={drawerWidth} />
       <Drawer
         sx={{
-          width: '45px',
+          width: '127px',
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,
