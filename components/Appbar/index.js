@@ -13,8 +13,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { Container, InputAdornment, TextField } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Minimenu from "../Minimenu";
+import { getCurrentUser } from "@/utils/firebase.utils";
 
 // Component
 
@@ -62,6 +63,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Appbar({ drawerWidth }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [imgUrl, setImgurl] = useState('')
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -70,6 +72,16 @@ export default function Appbar({ drawerWidth }) {
   const handleOpenStripe = () => {
     window.open('https://buy.stripe.com/8wMg1n04F4MHbC09AC')
   }
+
+  const userGet = async() => {
+    const user = await getCurrentUser()
+    setImgurl(user?.photoURL)
+  }
+
+  useEffect(() => {
+  userGet()
+  },[])
+
 
   return (
     <AppBar
@@ -133,8 +145,9 @@ export default function Appbar({ drawerWidth }) {
             // backgroundColor: "lightgrey",
             color: "#7B68EE",
             borderColor: "#7B68EE",
-            fontSize: "10px",
+            fontSize: "12px",
             fontStyle: "Raleway",
+            fontWeight: 'bold',
 
             "&:hover": {
               borderColor: "lightgrey",
@@ -149,7 +162,7 @@ export default function Appbar({ drawerWidth }) {
           <IconButton sx={{ mx: 1, p: 0 }}>
             <Avatar
               alt="Remy Sharp"
-              src="/static/user/user_image.jpeg"
+              src={imgUrl}
               sx={{ width: 30, height: 30 }}
             />
           </IconButton>

@@ -109,10 +109,9 @@ export default function Dashboard() {
                   sx={{
                     ".MuiListItemText-primary": {
                       fontStyle: "Raleway",
-                      fontSize: "12px",
+                      fontSize: "15px",
                       color: "black",
-
-                      fontWeight: "300",
+                      fontWeight: "bold",
                     },
                   }}
                 />
@@ -155,7 +154,7 @@ export default function Dashboard() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: "inline" }}
+            sx={{ display: "inline", fontWeight: 'bold', fontSize:'2rem', color:'#7B68EE' }}
           >
             Recent Videos
           </Typography>
@@ -171,9 +170,10 @@ export default function Dashboard() {
               color: "#7B68EE",
               borderColor: "#7B68EE",
               fontStyle: "Raleway",
-              fontSize: "10px",
-              padding: "8px 24px", // Example padding values: 12px vertical and 24px horizontal
+              fontSize: "12px",
+              padding: "10px 24px", // Example padding values: 12px vertical and 24px horizontal
               borderRadius: "8px", // Fully rounded edges
+              fontWeight: 'bold',
             }}
           >
             Create new video
@@ -187,9 +187,10 @@ export default function Dashboard() {
               bgcolor: "#7B68EE !important",
               color:'white',
               fontStyle: "Raleway",
-              fontSize: "10px",
-              padding: "8px 24px", // Example padding values: 12px vertical and 24px horizontal
+              fontSize: "12px",
+              padding: "10px 24px", // Example padding values: 12px vertical and 24px horizontal
               borderRadius: "8px", // Fully rounded edges
+              fontWeight: 'bold',
               "&:hover": {
                 bgcolor: "#7B68EE",
               },

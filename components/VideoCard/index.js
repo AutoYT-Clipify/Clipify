@@ -180,6 +180,7 @@ export default function VideoCards({
               borderColor: "#7B68EE",
               fontStyle: "Raleway",
               fontSize: "12px",
+              fontWeight: 'bold',
               padding: "5px 64px", // Example padding values: 12px vertical and 24px horizontal
               borderRadius: "8px", // Fully rounded edges
               "&:hover": {
@@ -198,10 +199,12 @@ export default function VideoCards({
               fontStyle: "Raleway",
               fontSize: "12px",
               padding: "5px 64px", // Example padding values: 12px vertical and 24px horizontal
-              borderRadius: "8px", // Fully rounded edges
+              borderRadius: "8px",
+              fontWeight: 'bold', // Fully rounded edges
               "&:hover": {
                 bgcolor: "#7B68EE",
               },
+              
             }}
           >
             Post

@@ -3,16 +3,29 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
+import { getCurrentUser } from "@/utils/firebase.utils";
 
 export default function Minimenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const [name, setName] = useState(null)
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const userGet = async() => {
+    const user = await getCurrentUser()
+    setName(user?.displayName)
+  }
+
+  useEffect(() => {
+  userGet()
+  },[])
 
   return (
     <div>
@@ -33,15 +46,16 @@ export default function Minimenu() {
         onClick={handleClick}
         sx={{
           backgroundColor: "transparent",
-          fontSize: "10px",
+          fontSize: "12px",
           fontStyle: "Raleway",
           color: "black",
+          fontWeight:'bold',
           "&:hover": {
             backgroundColor: "rgba(255, 255, 255, 0.1)", // Optional: slight white shade on hover
           },
         }}
       >
-        Deniyal Dehleh
+        {name ? name : ''}
         {/* <Typography
           variant="caption"
           sx={{ color: "lightgrey", display: "block" }}
