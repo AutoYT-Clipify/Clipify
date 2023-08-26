@@ -31,10 +31,6 @@ export default function BlogToVideo({showcase, howItWorks, vs, pricing, testimon
   return (
     <Fragment>
       <Header />
-      <div className="fb-customerchat" 
-         attribution="setup_tool" 
-         page_id="YOUR_PAGE_ID">
-    </div>
       <Showcase showcase={showcase}/>
       <Brands />
       <HowItWorks howItWorks={howItWorks} />

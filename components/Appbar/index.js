@@ -66,6 +66,11 @@ export default function Appbar({ drawerWidth }) {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
+
+  const handleOpenStripe = () => {
+    window.open('https://buy.stripe.com/test_5kAdSHeWWdkCdrifYY')
+  }
+
   return (
     <AppBar
       position="fixed"
@@ -122,6 +127,7 @@ export default function Appbar({ drawerWidth }) {
         <Box sx={{ flexGrow: 1 }} />
         <Button
           variant="outlined"
+          onClick={handleOpenStripe}
           sx={{
             mx: 2,
             // backgroundColor: "lightgrey",

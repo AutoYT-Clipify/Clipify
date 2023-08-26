@@ -51,6 +51,10 @@ export default function VideoCards({
     VideoDialogsetOpen(false);
   };
 
+  const handleOpenStripe = () => {
+    window.open('https://buy.stripe.com/test_5kAdSHeWWdkCdrifYY')
+  }
+
   return (
     <Card
       sx={{
@@ -118,28 +122,30 @@ export default function VideoCards({
             >
               Social Media :
             </Typography>
-            <IconButton sx={{ mx: "3px", p: 0 }}>
+            <IconButton sx={{ mx: "3px", p: 0 }}
+              onClick={handleOpenStripe}
+            >
               <Avatar
                 alt="Remy Sharp"
                 src="/static/icons/facebook.png"
                 sx={{ width: 20, height: 20 }} // Adjust the width and height values for desired size
               />
             </IconButton>
-            <IconButton sx={{ mx: "3px", p: 0 }}>
+            <IconButton sx={{ mx: "3px", p: 0 }}  onClick={handleOpenStripe}>
               <Avatar
                 alt="Remy Sharp"
                 src="/static/icons/instagram.png"
                 sx={{ width: 20, height: 20 }} // Adjust the width and height values for desired size
               />
             </IconButton>
-            <IconButton sx={{ mx: "3px", p: 0 }}>
+            <IconButton sx={{ mx: "3px", p: 0 }}  onClick={handleOpenStripe}>
               <Avatar
                 alt="Remy Sharp"
                 src="/static/icons/tiktok.png"
                 sx={{ width: 20, height: 20 }} // Adjust the width and height values for desired size
               />
             </IconButton>
-            <IconButton sx={{ mx: "3px", p: 0 }}>
+            <IconButton sx={{ mx: "3px", p: 0 }}  onClick={handleOpenStripe}>
               <Avatar
                 alt="Remy Sharp"
                 src="/static/icons/youtube.png"
@@ -167,6 +173,7 @@ export default function VideoCards({
         <Stack direction="row" spacing={2} sx={{ my: 1 }}>
           <Button
             variant="outlined"
+            onClick={handleOpenStripe}
             sx={{
               mx: 1,
               color: "#7B68EE",
@@ -184,9 +191,10 @@ export default function VideoCards({
           </Button>
           <Button
             variant="contained"
+            onClick={handleOpenStripe}
             sx={{
               mx: 1,
-              bgcolor: "#7B68EE",
+              bgcolor: "#7B68EE !important",
               fontStyle: "Raleway",
               fontSize: "12px",
               padding: "5px 64px", // Example padding values: 12px vertical and 24px horizontal

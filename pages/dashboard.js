@@ -29,6 +29,8 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 // Component
 import Appbar from "../components/Appbar";
 import VideoSection from "../components/VideoSection";
+import { IconButton } from "@mui/material";
+import Link from "next/link";
 const drawerWidth = 240;
 
 const menuItems = [
@@ -41,13 +43,18 @@ const menuItems = [
 ];
 
 export default function Dashboard() {
+
+  const handleOpenStripe = () => {
+    window.open('https://buy.stripe.com/test_5kAdSHeWWdkCdrifYY')
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <Appbar drawerWidth={drawerWidth} />
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: '45px',
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,
@@ -58,7 +65,7 @@ export default function Dashboard() {
         anchor="left"
       >
         <Box sx={{ m: 2, p: 1, mt: 1 }}>
-          <Typography
+          {/* <Typography
             variant="h6"
             noWrap
             component="div"
@@ -70,7 +77,14 @@ export default function Dashboard() {
             }}
           >
             Clipfy Club
-          </Typography>
+          </Typography> */}
+          <Link href={'#home'}>
+							<img
+								className="w-[7rem]"
+								src="/logo.png"
+								alt="Logo"
+							/>
+						</Link>
         </Box>
         {/* <Toolbar /> */}
 
@@ -126,7 +140,7 @@ export default function Dashboard() {
         </List>
         {/* <Divider /> */}
       </Drawer>
-      <Box  sx={{ flexGrow: 1, bgcolor: "#f2f2f2", p: 3 }}>
+      <Box  sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
         <Box
           sx={{
@@ -151,6 +165,7 @@ export default function Dashboard() {
             variant="outlined"
             disableElevation
             startIcon={<AddIcon />}
+            onClick={handleOpenStripe}
             sx={{
               mx: 1,
               color: "#7B68EE",
@@ -164,12 +179,13 @@ export default function Dashboard() {
             Create new video
           </Button>
           <Button
-            variant="contained"
-            disableElevation
+         
             startIcon={<ContentCopyIcon />}
+            onClick={handleOpenStripe}
             sx={{
               mx: 1,
-              bgcolor: "#7B68EE",
+              bgcolor: "#7B68EE !important",
+              color:'white',
               fontStyle: "Raleway",
               fontSize: "10px",
               padding: "8px 24px", // Example padding values: 12px vertical and 24px horizontal
