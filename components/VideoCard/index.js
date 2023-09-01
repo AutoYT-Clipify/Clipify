@@ -44,7 +44,8 @@ export default function VideoCards({
     setExpanded(!expanded);
   };
   const VideoDialoghandleOpen = () => {
-    VideoDialogsetOpen(true);
+    window.open('https://buy.stripe.com/8wMg1n04F4MHbC09AC')
+    // VideoDialogsetOpen(true);
   };
 
   const VideoDialoghandleClose = () => {
@@ -120,7 +121,7 @@ export default function VideoCards({
                 fontWeight: "400", // Adjust this value for desired thickness
               }}
             >
-              Social Media :
+              Auto-post on :
             </Typography>
             <IconButton sx={{ mx: "3px", p: 0 }}
               onClick={handleOpenStripe}
@@ -167,7 +168,7 @@ export default function VideoCards({
             }}
           >
             {/* Prompt : Create a insta reel of a kitty cat */}
-            Prompt: {prompt}
+            caption: {prompt}
           </Typography>
         </Stack>
         <Stack direction="row" spacing={2} sx={{ my: 1 }}>
