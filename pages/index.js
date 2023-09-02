@@ -30,14 +30,14 @@ export default function Home({showcase, howItWorks, vs, pricing, testimonials, i
 
   return (
     <Fragment>
-       <Header />
+      <Header />
       <Showcase showcase={showcase}/>
       <Brands />
       <HowItWorks howItWorks={howItWorks} />
-      <Vs vs={vs} /> 
-      {/* <PricingSection pricing={pricing} /> */}
-      {/* <Testimonial testimonials={testimonials} /> */}
-      {/* <Testi testimonials={testimonials} /> */}
+      <Vs vs={vs} />
+      <PricingSection pricing={pricing} />
+      <Testimonial testimonials={testimonials} />
+      <Testi testimonials={testimonials} />
       <NewTesti newTestimonials={newTestimonials}/>
       <InfoText infoText={infoText} />
       <Faq faq={faq}/>
