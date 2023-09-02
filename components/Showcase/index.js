@@ -28,17 +28,17 @@ const Showcase = ({ showcase }) => {
     useEffect(() => {
         if(currentPathname === '/text-to-tiktok') {
             setSearchText('Create a TikTok about…')
-            setFirst('TiktokGPT is finally here. Create 30 viral shorts in 30 seconds. Animated shorts.')
+            setFirst('TiktokGPT is finally here. Create 30 viral shorts in 30 seconds. text-to-tiktok.')
             setTitle('Turn Your Text Prompt to the Next Viral Tiktok with AI');
             setDetail('Turn Your Text into a Viral Tiktok with Human-like voice over & Caption ready to post on all platforms! Supports all languages.')
         }else if (currentPathname === '/text-to-reels') {
             setSearchText('Create a Reel about….')
-            setFirst('ReelGPT is finally here. Create 30 viral shorts in 30 seconds. Animated shorts.')
+            setFirst('ReelGPT is finally here. Create 30 viral shorts in 30 seconds. text-to-reels.')
             setTitle('Turn Your Text Prompt to the Next Viral Reels with AI');
             setDetail('Turn Your Text into a Viral Reels with Human-like voice over & Caption ready to post on all platforms! Supports all languages.')
         } else if (currentPathname === '/text-to-shorts') {
             setSearchText('Create a Short about….')
-            setFirst('ShortGPT is finally here. Create 30 viral shorts in 30 seconds. Animated shorts.')
+            setFirst('ShortGPT is finally here. Create 30 viral shorts in 30 seconds. text-to-shorts.')
             setTitle('Turn Your Text Prompt to the Next Viral Shorts with AI')  
             setDetail('Turn Your Text into a Viral Shorts with Human-like voice over & Caption ready to post on all platforms! Supports all languages.')
         } else if (currentPathname === '/blog-to-video') {
