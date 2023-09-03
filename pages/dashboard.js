@@ -31,6 +31,10 @@ import Appbar from "../components/Appbar";
 import VideoSection from "../components/VideoSection";
 import { IconButton } from "@mui/material";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { generateImageFromPrompt, generateTwoWordsQuery } from "@/utils/openai";
+import { ClipLoader, HashLoader } from "react-spinners";
 const drawerWidth = 240;
 
 const menuItems = [
@@ -43,10 +47,57 @@ const menuItems = [
 ];
 
 export default function Dashboard() {
+  const [loading, setLoading] = useState(true);
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const prompt = JSON.parse(localStorage.getItem("prompt"));
+    if (prompt) {
+      generateImage(prompt);
+    } else {
+      const localVideos = JSON.parse(localStorage.getItem("videos"));
+      if (localVideos.length) {
+        setVideos(localVideos);
+      }
+      setLoading(false);
+    }
+  }, []);
+
+  const generateImage = async (prompt) => {
+    try {
+      console.log("prompt: ", prompt);
+      let twoWords = await generateTwoWordsQuery(prompt);
+      console.log("twoWords: ", twoWords);
+      let imageUrl = await generateImageFromPrompt(twoWords);
+      console.log("imageUrl: ", imageUrl);
+      const video = {
+        outputImage: imageUrl,
+        words: twoWords,
+        prompt: prompt,
+        user: 123,
+      };
+      console.log("video: ", video);
+      let updatedVideo = [...videos, video];
+
+      const localVideos = JSON.parse(localStorage.getItem("videos"));
+
+      if (localVideos && localVideos.length) {
+        // setVideos(localVideos);
+        updatedVideo = [...updatedVideo, ...localVideos];
+      }
+      localStorage.setItem("videos", JSON.stringify(updatedVideo));
+      localStorage.removeItem("prompt");
+      setVideos(updatedVideo);
+      setLoading(false);
+    } catch (error) {
+      console.log("error: ", error);
+      setLoading(false);
+    }
+  };
 
   const handleOpenStripe = () => {
-    window.open('https://buy.stripe.com/8wMg1n04F4MHbC09AC')
-  }
+    window.open("https://buy.stripe.com/8wMg1n04F4MHbC09AC");
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -54,7 +105,7 @@ export default function Dashboard() {
       <Appbar drawerWidth={drawerWidth} />
       <Drawer
         sx={{
-          width: '127px',
+          width: "127px",
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,
@@ -78,13 +129,9 @@ export default function Dashboard() {
           >
             Clipfy Club
           </Typography> */}
-          <Link href={'#home'}>
-							<img
-								className="w-[7rem]"
-								src="/logo.png"
-								alt="Logo"
-							/>
-						</Link>
+          <Link href={"#home"}>
+            <img className="w-[7rem]" src="/logo.png" alt="Logo" />
+          </Link>
         </Box>
         {/* <Toolbar /> */}
 
@@ -139,7 +186,7 @@ export default function Dashboard() {
         </List>
         {/* <Divider /> */}
       </Drawer>
-      <Box  sx={{ flexGrow: 1, p: 3 }}>
+      <Box sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
         <Box
           sx={{
@@ -154,7 +201,12 @@ export default function Dashboard() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: "inline", fontWeight: 'bold', fontSize:'2rem', color:'#7B68EE' }}
+            sx={{
+              display: "inline",
+              fontWeight: "bold",
+              fontSize: "2rem",
+              color: "#7B68EE",
+            }}
           >
             Recent Videos
           </Typography>
@@ -173,24 +225,23 @@ export default function Dashboard() {
               fontSize: "12px",
               padding: "10px 24px", // Example padding values: 12px vertical and 24px horizontal
               borderRadius: "8px", // Fully rounded edges
-              fontWeight: 'bold',
+              fontWeight: "bold",
             }}
           >
             Create new video
           </Button>
           <Button
-         
             startIcon={<ContentCopyIcon />}
             onClick={handleOpenStripe}
             sx={{
               mx: 1,
               bgcolor: "#7B68EE !important",
-              color:'white',
+              color: "white",
               fontStyle: "Raleway",
               fontSize: "12px",
               padding: "10px 24px", // Example padding values: 12px vertical and 24px horizontal
               borderRadius: "8px", // Fully rounded edges
-              fontWeight: 'bold',
+              fontWeight: "bold",
               "&:hover": {
                 bgcolor: "#7B68EE",
               },
@@ -199,8 +250,26 @@ export default function Dashboard() {
             Copy the code snippet
           </Button>
         </Box>
-
-        <VideoSection />
+        {loading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "70vh", // Optionally, set a specific height for the container
+            }}
+          >
+            <HashLoader
+              loading={loading}
+              size={150}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+              color="#7B68EE"
+            />
+          </div>
+        ) : (
+          <VideoSection videos={videos} />
+        )}
       </Box>
     </Box>
   );

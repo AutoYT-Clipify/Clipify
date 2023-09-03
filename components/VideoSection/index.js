@@ -5,12 +5,12 @@ import List from "@mui/material/List";
 
 // Comp
 import Cards from "../VideoCard";
-const VideoSection = () => {
+const VideoSection = ({ videos }) => {
   return (
     <div>
       <List style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        {["Videos"].map((text, index) => (
-          <Cards key={index}/>
+        {videos.map((video, index) => (
+          <Cards key={index} video={video} />
         ))}
       </List>
     </div>

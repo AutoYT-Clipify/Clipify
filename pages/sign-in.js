@@ -29,6 +29,7 @@ const SignIn = () => {
     console.log("I am user", user);
     if (user) {
       const { email, displayName, photoURL } = user;
+      setUser(email);
       await createOrUpdateUser(displayName, email);
     }
     return user?.email;
