@@ -33,7 +33,11 @@ import { IconButton } from "@mui/material";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { generateImageFromPrompt, generateTwoWordsQuery } from "@/utils/openai";
+import {
+  generateCaption,
+  generateImageFromPrompt,
+  generateTwoWordsQuery,
+} from "@/utils/openai";
 import { ClipLoader, HashLoader } from "react-spinners";
 const drawerWidth = 240;
 
@@ -67,6 +71,7 @@ export default function Dashboard() {
     try {
       console.log("prompt: ", prompt);
       let twoWords = await generateTwoWordsQuery(prompt);
+      let caption = await generateCaption(prompt);
       console.log("twoWords: ", twoWords);
       let imageUrl = await generateImageFromPrompt(twoWords);
       console.log("imageUrl: ", imageUrl);
@@ -75,6 +80,7 @@ export default function Dashboard() {
         words: twoWords,
         prompt: prompt,
         user: 123,
+        caption: caption,
       };
       console.log("video: ", video);
       let updatedVideo = [...videos, video];

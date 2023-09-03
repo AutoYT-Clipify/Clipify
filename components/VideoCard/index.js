@@ -20,6 +20,8 @@ import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -39,7 +41,7 @@ export default function VideoCards({ video }) {
     setExpanded(!expanded);
   };
   const VideoDialoghandleOpen = () => {
-    window.open('https://buy.stripe.com/8wMg1n04F4MHbC09AC')
+    window.open("https://buy.stripe.com/8wMg1n04F4MHbC09AC");
     // VideoDialogsetOpen(true);
   };
 
@@ -61,7 +63,42 @@ export default function VideoCards({ video }) {
       }}
     >
       <CardHeader />
-      <CardMedia
+
+      {/*  */}
+      <div style={{ position: "relative" }}>
+        <CardMedia
+          component="img"
+          height="300"
+          image={video.outputImage}
+          alt="Paella dish"
+          sx={{
+            p: 2,
+            borderRadius: "25px",
+          }}
+          onClick={VideoDialoghandleOpen}
+        />
+        {/* Add the local image here */}
+        <img
+          src="static/playIcon.png" // Replace with the actual path to your local image
+          alt="Play Icon"
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            padding: "50px", // Added padding
+            borderRadius: "50%", // Apply the same styling as before
+            width: "170px", // Set the width and height to match your previous icon size
+            height: "170px",
+            cursor: "pointer",
+          }}
+          onClick={handleOpenStripe} // Define a function to handle video playback
+        />
+      </div>
+
+      {/*  */}
+
+      {/* <CardMedia
         component="img"
         height="300"
         image={video.outputImage}
@@ -76,7 +113,7 @@ export default function VideoCards({ video }) {
           borderRadius: "25px",
         }}
         onClick={VideoDialoghandleOpen} // <-- Add this line
-      />
+      /> */}
       <Dialog
         open={VideoDialogopen}
         onClose={VideoDialoghandleClose}
@@ -88,21 +125,21 @@ export default function VideoCards({ video }) {
           Your browser does not support the video tag.
         </video> */}
       </Dialog>
-
       <CardContent>
         <Stack direction="column" spacing={1} sx={{ pb: 3 }}>
           <Typography
             variant="h6"
-            noWrap
+            // noWrap
             component="div"
             sx={{
               fontStyle: "Lato",
               fontSize: "16px",
               fontWeight: "700", // Adjust this value for desired thickness
+              // borderWidth:"10px",
             }}
           >
             {/* Kitty Reel */}
-            {video?.prompt}
+            {video?.words}
           </Typography>
           <Box>
             <Typography
@@ -117,7 +154,7 @@ export default function VideoCards({ video }) {
                 fontWeight: "400", // Adjust this value for desired thickness
               }}
             >
-              Auto-post on :
+              Auto-Post On :-
             </Typography>
             <IconButton sx={{ mx: "3px", p: 0 }} onClick={handleOpenStripe}>
               <Avatar
@@ -150,7 +187,7 @@ export default function VideoCards({ video }) {
           </Box>
           <Typography
             variant="h6"
-            noWrap
+            // noWrap
             component="div"
             sx={{
               my: 1,
@@ -162,9 +199,9 @@ export default function VideoCards({ video }) {
             }}
           >
             {/* Prompt : Create a insta reel of a kitty cat */}
-            Prompt: {video.prompt}
+            Caption: {video?.caption}
           </Typography>
-          <Typography
+          {/* <Typography
             variant="h6"
             noWrap
             component="div"
@@ -177,9 +214,23 @@ export default function VideoCards({ video }) {
               fontWeight: "400", // Adjust this value for desired thickness
             }}
           >
-            {/* Prompt : Create a insta reel of a kitty cat */}
+            Prompt: {video.prompt}
+          </Typography> */}
+          {/* <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{
+              my: 1,
+              display: "inline",
+              color: "grey",
+              fontStyle: "Ralway",
+              fontSize: "16px",
+              fontWeight: "400", // Adjust this value for desired thickness
+            }}
+          >
             Search Word: {video.words}
-          </Typography>
+          </Typography> */}
         </Stack>
         <Stack direction="row" spacing={2} sx={{ my: 1 }}>
           <Button

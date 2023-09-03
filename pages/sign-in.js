@@ -29,7 +29,7 @@ const SignIn = () => {
     console.log("I am user", user);
     if (user) {
       const { email, displayName, photoURL } = user;
-      setUser(email);
+      // setUser(email);
       await createOrUpdateUser(displayName, email);
     }
     return user?.email;
@@ -38,7 +38,6 @@ const SignIn = () => {
   async function createOrUpdateUser(name, email) {
     // const existingUserQuery = `*[_type == "user" && email == $email]`;
     // const existingUser = await sanityClient.fetch(existingUserQuery, { email });
-  
     // if (existingUser.length === 0) {
     //   const newUser = {
     //     _type: "user",
@@ -52,7 +51,7 @@ const SignIn = () => {
     //   return null;
     // }
   }
-  
+
   useEffect(() => {
     userGet();
     if (user) {
@@ -261,6 +260,9 @@ const SignIn = () => {
                     WebkitFontSmoothing: "antialiased",
                   }}
                 >
+                  <h2 className="bold text-[3rem] text-left mb-[4rem]">
+                    Sign Up to get your Post
+                  </h2>
                   <div
                     style={{
                       fontWeight: 500,
@@ -272,6 +274,7 @@ const SignIn = () => {
                       WebkitFontSmoothing: "antialiased",
                     }}
                   ></div>
+
                   <form
                     style={{
                       width: "100%",
@@ -287,9 +290,6 @@ const SignIn = () => {
                         WebkitFontSmoothing: "antialiased",
                       }}
                     >
-                      <h2 className="bold text-[3rem] text-left mb-[4rem]">
-                        Sign Up to get your Post
-                      </h2>
                       <div
                         style={{
                           flexWrap: "nowrap",
