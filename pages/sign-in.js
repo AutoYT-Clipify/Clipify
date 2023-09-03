@@ -29,22 +29,29 @@ const SignIn = () => {
     console.log("I am user", user);
     if (user) {
       const { email, displayName, photoURL } = user;
-      createUser(displayName, email);
+      await createUser(displayName, email);
     }
     return user?.email;
   };
 
-  async function createUser(name, email) {
-    const newUser = {
-      _type: "user", // Make sure this matches the schema name you defined
-      name,
-      email,
-    };
-
-    const response = await sanityClient.create(newUser);
-    return response;
+  async function createOrUpdateUser(name, email) {
+    // const existingUserQuery = `*[_type == "user" && email == $email]`;
+    // const existingUser = await sanityClient.fetch(existingUserQuery, { email });
+  
+    // if (existingUser.length === 0) {
+    //   const newUser = {
+    //     _type: "user",
+    //     name,
+    //     email,
+    //   };
+    //   const response = await sanityClient.create(newUser);
+    //   return response;
+    // } else {
+    //   console.log('User with the same email already exists');
+    //   return null;
+    // }
   }
-
+  
   useEffect(() => {
     userGet();
     if (user) {
