@@ -3,6 +3,7 @@ import Container from '@/components/Container'
 import { sanityClient } from '@/sanity'
 import '@/styles/globals.css'
 import { useEffect } from "react"
+import { Toaster } from 'react-hot-toast';
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -41,6 +42,8 @@ export default function App({ Component, pageProps }) {
     <>
       <Container>
         <Component {...pageProps} />
+        <Toaster position="top-center" reverseOrder={false} />
+
         {/* <div className="fb-customerchat" 
          >
     </div> */}
