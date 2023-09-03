@@ -111,6 +111,9 @@ const Showcase = ({ showcase }) => {
   const handleGenerate = () => {
     if (!prompt.length) {
       toast.error("Please enter the prompt..");
+    } else {
+      localStorage.setItem("prompt", JSON.stringify(prompt));
+      router.push("get-started")
     }
   };
 

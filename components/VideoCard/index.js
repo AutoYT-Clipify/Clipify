@@ -31,12 +31,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function VideoCards({
-  videoTitle,
-  prompt,
-  thumbnailUrl,
-  videoUrl,
-}) {
+export default function VideoCards({ video }) {
   const [expanded, setExpanded] = React.useState(false);
   const [VideoDialogopen, VideoDialogsetOpen] = React.useState(false);
 
@@ -53,8 +48,8 @@ export default function VideoCards({
   };
 
   const handleOpenStripe = () => {
-    window.open('https://buy.stripe.com/8wMg1n04F4MHbC09AC')
-  }
+    window.open("https://buy.stripe.com/8wMg1n04F4MHbC09AC");
+  };
 
   return (
     <Card
@@ -69,11 +64,12 @@ export default function VideoCards({
       <CardMedia
         component="img"
         height="300"
-        image={
-          thumbnailUrl && thumbnailUrl.trim() !== ""
-            ? thumbnailUrl
-            : "/cat.jpeg"
-        }
+        image={video.outputImage}
+        // image={
+        //   thumbnailUrl && thumbnailUrl.trim() !== ""
+        //     ? thumbnailUrl
+        //     : "/cat.jpeg"
+        // }
         alt="Paella dish"
         sx={{
           p: 2,
@@ -87,10 +83,10 @@ export default function VideoCards({
         maxWidth="md" // Adjust based on your video size preference
         fullWidth={true}
       >
-        <video controls width="100%">
+        {/* <video controls width="100%">
           <source src={videoUrl} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
       </Dialog>
 
       <CardContent>
@@ -106,7 +102,7 @@ export default function VideoCards({
             }}
           >
             {/* Kitty Reel */}
-            {videoTitle}
+            {video?.prompt}
           </Typography>
           <Box>
             <Typography
@@ -123,30 +119,28 @@ export default function VideoCards({
             >
               Auto-post on :
             </Typography>
-            <IconButton sx={{ mx: "3px", p: 0 }}
-              onClick={handleOpenStripe}
-            >
+            <IconButton sx={{ mx: "3px", p: 0 }} onClick={handleOpenStripe}>
               <Avatar
                 alt="Remy Sharp"
                 src="/static/icons/facebook.png"
                 sx={{ width: 20, height: 20 }} // Adjust the width and height values for desired size
               />
             </IconButton>
-            <IconButton sx={{ mx: "3px", p: 0 }}  onClick={handleOpenStripe}>
+            <IconButton sx={{ mx: "3px", p: 0 }} onClick={handleOpenStripe}>
               <Avatar
                 alt="Remy Sharp"
                 src="/static/icons/instagram.png"
                 sx={{ width: 20, height: 20 }} // Adjust the width and height values for desired size
               />
             </IconButton>
-            <IconButton sx={{ mx: "3px", p: 0 }}  onClick={handleOpenStripe}>
+            <IconButton sx={{ mx: "3px", p: 0 }} onClick={handleOpenStripe}>
               <Avatar
                 alt="Remy Sharp"
                 src="/static/icons/tiktok.png"
                 sx={{ width: 20, height: 20 }} // Adjust the width and height values for desired size
               />
             </IconButton>
-            <IconButton sx={{ mx: "3px", p: 0 }}  onClick={handleOpenStripe}>
+            <IconButton sx={{ mx: "3px", p: 0 }} onClick={handleOpenStripe}>
               <Avatar
                 alt="Remy Sharp"
                 src="/static/icons/youtube.png"
@@ -168,7 +162,23 @@ export default function VideoCards({
             }}
           >
             {/* Prompt : Create a insta reel of a kitty cat */}
-            caption: {prompt}
+            Prompt: {video.prompt}
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{
+              my: 1,
+              display: "inline",
+              color: "grey",
+              fontStyle: "Ralway",
+              fontSize: "16px",
+              fontWeight: "400", // Adjust this value for desired thickness
+            }}
+          >
+            {/* Prompt : Create a insta reel of a kitty cat */}
+            Search Word: {video.words}
           </Typography>
         </Stack>
         <Stack direction="row" spacing={2} sx={{ my: 1 }}>
@@ -181,7 +191,7 @@ export default function VideoCards({
               borderColor: "#7B68EE",
               fontStyle: "Raleway",
               fontSize: "12px",
-              fontWeight: 'bold',
+              fontWeight: "bold",
               padding: "5px 64px", // Example padding values: 12px vertical and 24px horizontal
               borderRadius: "8px", // Fully rounded edges
               "&:hover": {
@@ -201,11 +211,10 @@ export default function VideoCards({
               fontSize: "12px",
               padding: "5px 64px", // Example padding values: 12px vertical and 24px horizontal
               borderRadius: "8px",
-              fontWeight: 'bold', // Fully rounded edges
+              fontWeight: "bold", // Fully rounded edges
               "&:hover": {
                 bgcolor: "#7B68EE",
               },
-              
             }}
           >
             Post

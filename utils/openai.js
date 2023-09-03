@@ -17,7 +17,7 @@ export const generateTwoWordsQuery = async (prompt) => {
       url: 'https://api.openai.com/v1/chat/completions',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer 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',
+        Authorization: 'Bearer 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',
       },
       data: requestData,
     };
@@ -46,7 +46,7 @@ export const generateImageFromPrompt = async (prompt) => {
       url: 'https://api.openai.com/v1/images/generations',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer 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',
+        Authorization: 'Bearer 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',
       },
       data: requestData,
     };
