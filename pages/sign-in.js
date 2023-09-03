@@ -261,6 +261,9 @@ const SignIn = () => {
                     WebkitFontSmoothing: "antialiased",
                   }}
                 >
+                   <h2 className="bold text-[3rem] text-left mb-[4rem]">
+                        Sign Up to get your Post
+                      </h2>
                   <div
                     style={{
                       fontWeight: 500,
@@ -272,6 +275,7 @@ const SignIn = () => {
                       WebkitFontSmoothing: "antialiased",
                     }}
                   ></div>
+                  
                   <form
                     style={{
                       width: "100%",
@@ -280,6 +284,7 @@ const SignIn = () => {
                       WebkitFontSmoothing: "antialiased",
                     }}
                   >
+                    
                     <div
                       style={{
                         boxSizing: "border-box",
@@ -287,9 +292,7 @@ const SignIn = () => {
                         WebkitFontSmoothing: "antialiased",
                       }}
                     >
-                      <h2 className="bold text-[3rem] text-left mb-[4rem]">
-                        Sign Up to get your Post
-                      </h2>
+                     
                       <div
                         style={{
                           flexWrap: "nowrap",
