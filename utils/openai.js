@@ -40,7 +40,7 @@ export const generateCaption = async (prompt) => {
       messages: [
         {
           role: "user",
-          content: `Write a good caption for title for this sentence. I just want  good caption in reponse noting else. ${prompt}`,
+          content:`Write a captivating social media caption for title for this sentence. I just want great caption in response noting else. ${prompt}`,
         },
       ],
     };
