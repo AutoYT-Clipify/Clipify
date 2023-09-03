@@ -66,6 +66,10 @@ const Showcase = ({ showcase }) => {
       );
       setFirst(null);
       setSearchText("Type or paste any blog to convert into any video");
+      setTxt(
+        "https://medium.com/geekculture/create-a-customer-service-chatbot-with-chatgpt-api-184a0fc8ed55"
+      );
+      setI(0);
     }
   }, []);
 
@@ -86,7 +90,7 @@ const Showcase = ({ showcase }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [i]);
+  }, [i,txt]);
 
   useEffect(() => {
     if (showSpinner) {
