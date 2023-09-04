@@ -18,7 +18,7 @@ export const generateTwoWordsQuery = async (prompt) => {
       url: "https://api.openai.com/v1/chat/completions",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${OPEN_AI_KEY}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPEN_AI_KEY}`,
       },
       data: requestData,
     };
@@ -50,7 +50,7 @@ export const generateCaption = async (prompt) => {
       url: "https://api.openai.com/v1/chat/completions",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${OPEN_AI_KEY}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPEN_AI_KEY}`,
       },
       data: requestData,
     };
@@ -78,7 +78,7 @@ export const generateImageFromPrompt = async (prompt) => {
       url: "https://api.openai.com/v1/images/generations",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${OPEN_AI_KEY}`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPEN_AI_KEY}`,
       },
       data: requestData,
     };

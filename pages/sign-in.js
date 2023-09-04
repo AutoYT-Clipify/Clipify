@@ -1,11 +1,12 @@
 import { getCurrentUser, signInWithGooglePopup } from "@/utils/firebase.utils";
 import React, { useEffect, useState } from "react";
-import { sanityClient } from "../sanity";
+import { useRouter } from "next/router";
 
 const SignIn = () => {
   const [url, setUrl] = useState(null);
   const [user, setUser] = useState(null);
   const oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth";
+  const router = useRouter();
 
   const params = {
     client_id:
@@ -26,7 +27,7 @@ const SignIn = () => {
 
   const userGet = async () => {
     const user = await getCurrentUser();
-    console.log("I am user", user);
+
     if (user) {
       const { email, displayName, photoURL } = user;
       // setUser(email);
@@ -55,11 +56,9 @@ const SignIn = () => {
   useEffect(() => {
     userGet();
     if (user) {
-      window.open("/dashboard");
+      router.push("/dashboard");
     }
   }, [user]);
-
-  console.log(user, "user");
 
   const handleSubmit = () => {
     const form = document.createElement("form");
@@ -82,10 +81,8 @@ const SignIn = () => {
     const urlParams = new URLSearchParams(window.location.hash.slice(1));
     const accessToken = urlParams.get("access_token");
 
-    if (accessToken) {
-      // Handle the access token, e.g., store it in state or local storage
-      console.log("Access Token:", accessToken);
-      window.open("/sign-in-success");
+    if (!!accessToken) {
+      router.push("/sign-in-success");
     } else {
       console.log("No access token received.");
     }

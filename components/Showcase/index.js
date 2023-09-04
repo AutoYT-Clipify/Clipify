@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import PrimaryButton from "../PrimaryButton";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import ButtonInverted from "../PrimaryButton/ButtonInverted";
-import { Player } from "video-react";
 import { ClipLoader } from "react-spinners";
 import { useRouter } from "next/router";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const Showcase = ({ showcase }) => {
   const [i, setI] = useState(0);
