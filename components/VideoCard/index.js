@@ -41,7 +41,8 @@ export default function VideoCards({ video }) {
     setExpanded(!expanded);
   };
   const VideoDialoghandleOpen = () => {
-    VideoDialogsetOpen(true);
+    window.open("https://buy.stripe.com/8wMg1n04F4MHbC09AC");
+    // VideoDialogsetOpen(true);
   };
 
   const VideoDialoghandleClose = () => {
@@ -65,36 +66,35 @@ export default function VideoCards({ video }) {
 
       {/*  */}
       <div style={{ position: "relative" }}>
-  <CardMedia
-    component="img"
-    height="300"
-    image={video.outputImage}
-    alt="Paella dish"
-    sx={{
-      p: 2,
-      borderRadius: "25px",
-    }}
-    onClick={VideoDialoghandleOpen}
-  />
-  {/* Add the local image here */}
-  <img
-    src="static/playIcon.png" // Replace with the actual path to your local image
-    alt="Play Icon"
-    style={{
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      padding: "50px", // Added padding
-      borderRadius: "50%", // Apply the same styling as before
-      width: "170px", // Set the width and height to match your previous icon size
-      height: "170px",
-      cursor:"pointer"
-    }}
-    onClick={handleOpenStripe} // Define a function to handle video playback
-  />
-</div>
-
+        <CardMedia
+          component="img"
+          height="300"
+          image={video.outputImage}
+          alt="Paella dish"
+          sx={{
+            p: 2,
+            borderRadius: "25px",
+          }}
+          onClick={VideoDialoghandleOpen}
+        />
+        {/* Add the local image here */}
+        <img
+          src="static/playIcon.png" // Replace with the actual path to your local image
+          alt="Play Icon"
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            padding: "50px", // Added padding
+            borderRadius: "50%", // Apply the same styling as before
+            width: "170px", // Set the width and height to match your previous icon size
+            height: "170px",
+            cursor: "pointer",
+          }}
+          onClick={handleOpenStripe} // Define a function to handle video playback
+        />
+      </div>
 
       {/*  */}
 

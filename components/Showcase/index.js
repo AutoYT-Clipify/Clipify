@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import PrimaryButton from "../PrimaryButton";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import ButtonInverted from "../PrimaryButton/ButtonInverted";
-import { Player } from "video-react";
 import { ClipLoader } from "react-spinners";
 import { useRouter } from "next/router";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const Showcase = ({ showcase }) => {
   const [i, setI] = useState(0);
@@ -29,7 +25,7 @@ const Showcase = ({ showcase }) => {
     if (currentPathname === "/text-to-tiktok") {
       setSearchText("Create a TikTok about…");
       setFirst(
-        "TiktokGPT is finally here. Create 30 viral shorts in 30 seconds. Animated shorts."
+        "TiktokGPT is finally here. Create 30 viral shorts in 30 seconds. text-to-tiktok."
       );
       setTitle("Turn Your Text Prompt to the Next Viral Tiktok with AI");
       setDetail(
@@ -38,7 +34,7 @@ const Showcase = ({ showcase }) => {
     } else if (currentPathname === "/text-to-reels") {
       setSearchText("Create a Reel about….");
       setFirst(
-        "ReelGPT is finally here. Create 30 viral shorts in 30 seconds. Animated shorts."
+        "ReelGPT is finally here. Create 30 viral shorts in 30 seconds. text-to-reels."
       );
       setTitle("Turn Your Text Prompt to the Next Viral Reels with AI");
       setDetail(
@@ -47,7 +43,7 @@ const Showcase = ({ showcase }) => {
     } else if (currentPathname === "/text-to-shorts") {
       setSearchText("Create a Short about….");
       setFirst(
-        "ShortGPT is finally here. Create 30 viral shorts in 30 seconds. Animated shorts."
+        "ShortGPT is finally here. Create 30 viral shorts in 30 seconds. text-to-shorts."
       );
       setTitle("Turn Your Text Prompt to the Next Viral Shorts with AI");
       setDetail(
@@ -113,7 +109,7 @@ const Showcase = ({ showcase }) => {
       toast.error("Please enter the prompt..");
     } else {
       localStorage.setItem("prompt", JSON.stringify(prompt));
-      router.push("get-started")
+      router.push("get-started");
     }
   };
 

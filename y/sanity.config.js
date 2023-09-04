@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'auto-yt',
 
-  projectId: 'dyzs9wuy',
+  projectId: '44s1n1yu',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool()],

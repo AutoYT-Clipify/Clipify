@@ -2,17 +2,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import Button from "@mui/material/Button";
 
 // Icons
@@ -29,12 +24,15 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 // Component
 import Appbar from "../components/Appbar";
 import VideoSection from "../components/VideoSection";
-import { IconButton } from "@mui/material";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
-import { generateCaption, generateImageFromPrompt, generateTwoWordsQuery } from "@/utils/openai";
-import { ClipLoader, HashLoader } from "react-spinners";
+import {
+  generateCaption,
+  generateImageFromPrompt,
+  generateTwoWordsQuery,
+} from "@/utils/openai";
+import { HashLoader } from "react-spinners";
+import { generatePromptToThumbnail } from "@/utils/service";
 const drawerWidth = 240;
 
 const menuItems = [
@@ -65,7 +63,6 @@ export default function Dashboard() {
 
   const generateImage = async (prompt) => {
     try {
-      console.log("prompt: ", prompt);
       let twoWords = await generateTwoWordsQuery(prompt);
       let caption = await generateCaption(prompt);
       console.log("twoWords: ", twoWords);
@@ -76,9 +73,9 @@ export default function Dashboard() {
         words: twoWords,
         prompt: prompt,
         user: 123,
-        caption:caption
+        caption: caption,
       };
-      console.log("video: ", video);
+
       let updatedVideo = [...videos, video];
 
       const localVideos = JSON.parse(localStorage.getItem("videos"));
