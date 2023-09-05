@@ -25,7 +25,7 @@ const Showcase = ({ showcase }) => {
     if (currentPathname === "/text-to-tiktok") {
       setSearchText("Create a TikTok about…");
       setFirst(
-        "TiktokGPT is finally here. Create 30 viral shorts in 30 seconds. text-to-tiktok."
+        "TiktokGPT is finally here. Create 30 viral tiktok in 30 seconds."
       );
       setTitle("Turn Your Text Prompt to the Next Viral Tiktok with AI");
       setDetail(
@@ -34,7 +34,7 @@ const Showcase = ({ showcase }) => {
     } else if (currentPathname === "/text-to-reels") {
       setSearchText("Create a Reel about….");
       setFirst(
-        "ReelGPT is finally here. Create 30 viral shorts in 30 seconds. text-to-reels."
+        "ReelGPT is finally here. Create 30 viral reels in 30 seconds."
       );
       setTitle("Turn Your Text Prompt to the Next Viral Reels with AI");
       setDetail(
@@ -43,7 +43,7 @@ const Showcase = ({ showcase }) => {
     } else if (currentPathname === "/text-to-shorts") {
       setSearchText("Create a Short about….");
       setFirst(
-        "ShortGPT is finally here. Create 30 viral shorts in 30 seconds. text-to-shorts."
+        "ShortGPT is finally here. Create 30 viral shorts in 30 seconds."
       );
       setTitle("Turn Your Text Prompt to the Next Viral Shorts with AI");
       setDetail(
