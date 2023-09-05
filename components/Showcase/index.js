@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import PrimaryButton from "../PrimaryButton";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import ButtonInverted from "../PrimaryButton/ButtonInverted";
+import { Player } from "video-react";
 import { ClipLoader } from "react-spinners";
 import { useRouter } from "next/router";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 const Showcase = ({ showcase }) => {
   const [i, setI] = useState(0);
   const [placeholder, setPlaceholder] = useState("");
-  const txt = "Create a insta reel of a siberian husky.";
+  const [txt, setTxt] = useState("Create a insta reel of a siberian husky.");
   const speed = 150;
   const [showSpinner, setShowSpinner] = useState(false);
   const [showImage, setShowImage] = useState(false);
@@ -20,6 +24,7 @@ const Showcase = ({ showcase }) => {
   const [detail, setDetail] = useState("");
   const [first, setFirst] = useState(null);
   const [searchText, setSearchText] = useState(null);
+  const [dynamicPlaceholder, setDynamicPlaceholder] = useState("");
 
   useEffect(() => {
     if (currentPathname === "/text-to-tiktok") {
@@ -31,6 +36,7 @@ const Showcase = ({ showcase }) => {
       setDetail(
         "Turn Your Text into a Viral Tiktok with Human-like voice over & Caption ready to post on all platforms! Supports all languages."
       );
+      setDynamicPlaceholder("Create tik tok videos");
     } else if (currentPathname === "/text-to-reels") {
       setSearchText("Create a Reel about….");
       setFirst(
@@ -40,8 +46,10 @@ const Showcase = ({ showcase }) => {
       setDetail(
         "Turn Your Text into a Viral Reels with Human-like voice over & Caption ready to post on all platforms! Supports all languages."
       );
+      setDynamicPlaceholder("Create reels from text");
     } else if (currentPathname === "/text-to-shorts") {
       setSearchText("Create a Short about….");
+      setTxt("Create a Short about….");
       setFirst(
         "ShortGPT is finally here. Create 30 viral shorts in 30 seconds."
       );
@@ -49,6 +57,7 @@ const Showcase = ({ showcase }) => {
       setDetail(
         "Turn Your Text into a Viral Shorts with Human-like voice over & Caption ready to post on all platforms! Supports all languages."
       );
+      setDynamicPlaceholder("Create reels from texxt");
     } else if (currentPathname === "/blog-to-video") {
       setTitle(
         "One Masterpiece, Multiple Masterposts. Dominate Search, Maximize Reach."
@@ -56,6 +65,12 @@ const Showcase = ({ showcase }) => {
       setDetail(
         "Turn Your blog into the next Viral Social media campaign with Human-like voice over & Caption ready to post on all platforms! Supports all languages. Try For Free - no credit card required."
       );
+      setFirst(null);
+      setSearchText("Type or paste any blog to convert into any video");
+      setTxt(
+        "https://medium.com/geekculture/create-a-customer-service-chatbot-with-chatgpt-api-184a0fc8ed55"
+      );
+      setI(0);
     }
   }, []);
 
@@ -76,7 +91,7 @@ const Showcase = ({ showcase }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [i]);
+  }, [i,txt]);
 
   useEffect(() => {
     if (showSpinner) {
@@ -124,7 +139,11 @@ const Showcase = ({ showcase }) => {
         >
           <div className="flex-1 self-center pr-[3rem]">
             <h4 className="flex justify-left bold gradient text-[6rem] lg:text-[2rem] mt-[8rem] lg:mt-[0rem] mb-[-30px] lg:mb-[0px]">
-              {first ? first : showcase?.title}
+              {currentPathname !== "/blog-to-video"
+                ? first
+                  ? first
+                  : showcase?.title
+                : null}
             </h4>
             <h2 className="bold lg:pr-[6rem] text-[7rem] lg:text-[4rem] mt-[5rem] lg:mt-[0.7rem] leading-[8rem] lg:leading-[5rem]">
               {title}
@@ -154,9 +173,7 @@ const Showcase = ({ showcase }) => {
                 className="ml-[2em] lg:ml-0 w-[105rem] h-[16rem] lg:w-[53.4rem] lg:h-[5.4rem] flex relative mt-[8rem] lg:mt-[1.2rem] z-[20]"
               >
                 <input
-                  placeholder={
-                    "Type or paste any blog to convert into any video"
-                  }
+                  placeholder={searchText}
                   onChange={handleChangePrompt}
                   // {...register("email", { required: "Email Address is required" })}
                   // aria-invalid={errors.email ? "true" : "false"}
