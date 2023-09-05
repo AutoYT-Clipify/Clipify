@@ -89,7 +89,7 @@ const Navbar = () => {
 							/>
 						</Link>
 					</motion.div>
-					<ul className="hidden lg:flex align-middle medium">
+					{/* <ul className="hidden lg:flex align-middle medium">
 						<li className="link" onClick={() => setSelectedMenu(null)}>
 							<Link href={'#home'}>Home</Link>
 						</li>
@@ -97,29 +97,29 @@ const Navbar = () => {
 							className="link"
 						>
 							<Link href="#services">Services</Link>
-							{/* <img
+							 <img
 								alt=""
 								src={
 									selectedMenu === 'services'
 										? `/static/menuUpArrow.svg`
 										: `/static/icon-navArrowDown.svg`
 								}
-							/> */}
+							/> 
 						</li>
 						<li
 							className="link"
 						>
 							<Link href="#solutions">Solutions</Link>
-							{/* <img
+							 <img
 								alt=""
 								src={
 									selectedMenu === 'products'
 										? `/static/menuUpArrow.svg`
 										: `/static/icon-navArrowDown.svg`
 								}
-							/> */}
+							/>
 						</li>
-						{/* <li
+						 <li
 						className="link"
 						>
 						<Link href="#pricing">Pricing</Link>
@@ -131,12 +131,12 @@ const Navbar = () => {
 										: `/static/icon-navArrowDown.svg`
 								}
 							/>
-						</li> */}
+						</li>
 
 						<li className="link">
 							<Link href="#testimonials">Testimonials</Link>
 						</li>
-					</ul>
+					</ul> */}
 					<motion.div
 						initial={{
 							x: 500,
