@@ -10,9 +10,34 @@ const GetStarted = () => {
     router.back();
   };
   const [selectedData, setSelectedData] = useState([]);
+  const fetchData = () => {
+    const data = JSON.parse(localStorage.getItem("data") || "[]");
+    return data;
+  };
+  // const modifyDataAtIndex = (index, newData) => {
+  //   const data = JSON.parse(localStorage.getItem("data") || "[]");
+  //   if (data.length > index) {
+  //     data[index] = { ...data[index], ...newData }; // Merge old and new data
+  //     localStorage.setItem("data", JSON.stringify(data));
+  //   }
+  // };
+  const modifyLastData = (newData) => {
+    const data = JSON.parse(localStorage.getItem("data") || "[]");
+    const lastIndex = data.length - 1;
+
+    if (lastIndex >= 0) {
+      data[lastIndex] = { ...data[lastIndex], ...newData }; // Merge old and new data for the last item
+      localStorage.setItem("data", JSON.stringify(data));
+    }
+  };
 
   const handleClick = () => {
     if (selectedData.length > 0) {
+      console.log(selectedData);
+
+      modifyLastData({ selected_social_media: selectedData });
+      let data = fetchData();
+      console.log(data);
       router.push("/select-gender");
     } else {
       toast.error("Please select a social media platform");

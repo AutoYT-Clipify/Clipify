@@ -20,13 +20,21 @@ import {
   getDocs,
 } from "firebase/firestore";
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyA_-EpWdqYAukdmYbYbwqTO6_gUYqLeX-o",
+//   authDomain: "clipify-d0bda.firebaseapp.com",
+//   projectId: "clipify-d0bda",
+//   storageBucket: "clipify-d0bda.appspot.com",
+//   messagingSenderId: "423956670154",
+//   appId: "1:423956670154:web:8544142a37d10a1d06f633",
+// };
 const firebaseConfig = {
-  apiKey: "AIzaSyA_-EpWdqYAukdmYbYbwqTO6_gUYqLeX-o",
-  authDomain: "clipify-d0bda.firebaseapp.com",
-  projectId: "clipify-d0bda",
-  storageBucket: "clipify-d0bda.appspot.com",
-  messagingSenderId: "423956670154",
-  appId: "1:423956670154:web:8544142a37d10a1d06f633",
+  apiKey: "AIzaSyBbqfIlTxsRmmMzwkNChxhytFCBkw_2Rgg",
+  authDomain: "clipifyclub.firebaseapp.com",
+  projectId: "clipifyclub",
+  storageBucket: "clipifyclub.appspot.com",
+  messagingSenderId: "794673289139",
+  appId: "1:794673289139:web:1b58d1f117e99a56579dc6",
 };
 
 // const firebaseApp =

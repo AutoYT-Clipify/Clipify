@@ -26,11 +26,17 @@ import Appbar from "../components/Appbar";
 import VideoSection from "../components/VideoSection";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+// import {
+//   generateCaption,
+//   generateImageFromPrompt,
+//   generateTwoWordsQuery,
+// } from "@/utils/openai";
 import {
   generateCaption,
   generateImageFromPrompt,
   generateTwoWordsQuery,
-} from "@/utils/openai";
+  generateVideoTitle,
+} from "./api/openai";
 import { HashLoader } from "react-spinners";
 import { generatePromptToThumbnail } from "@/utils/service";
 const drawerWidth = 240;
@@ -45,47 +51,113 @@ const menuItems = [
 ];
 
 export default function Dashboard() {
+  // const [loading, setLoading] = useState(true);
+  // const [videos, setVideos] = useState([]);
+  // const fetchData = () => {
+  //   const data = JSON.parse(localStorage.getItem("data") || "[]");
+  //   return data;
+  // };
+  // useEffect(() => {
+  //   const prompt = JSON.parse(localStorage.getItem("prompt"));
+  //   if (prompt) {
+  //     generateImage(prompt);
+  //   } else {
+  //     const localVideos = JSON.parse(localStorage.getItem("videos"));
+  //     if (localVideos.length) {
+  //       setVideos(localVideos);
+  //     }
+  //     setLoading(false);
+  //   }
+  // }, []);
+
+  // const generateImage = async (prompt) => {
+  //   try {
+  //     let twoWords = await generateTwoWordsQuery(prompt);
+  //     let caption = await generateCaption(prompt);
+  //     console.log("twoWords: ", twoWords);
+  //     let imageUrl = await generateImageFromPrompt(twoWords);
+  //     console.log("imageUrl: ", imageUrl);
+  //     const video = {
+  //       outputImage: imageUrl,
+  //       words: twoWords,
+  //       prompt: prompt,
+  //       user: 123,
+  //       caption: caption,
+  //     };
+
+  //     let updatedVideo = [...videos, video];
+
+  //     const localVideos = JSON.parse(localStorage.getItem("videos"));
+
+  //     if (localVideos && localVideos.length) {
+  //       // setVideos(localVideos);
+  //       updatedVideo = [...updatedVideo, ...localVideos];
+  //     }
+  //     localStorage.setItem("videos", JSON.stringify(updatedVideo));
+  //     localStorage.removeItem("prompt");
+  //     setVideos(updatedVideo);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.log("error: ", error);
+  //     setLoading(false);
+  //   }
+  // };
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState([]);
 
+  const fetchData = () => {
+    const data = JSON.parse(localStorage.getItem("data") || "[]");
+    return data;
+  };
+
   useEffect(() => {
-    const prompt = JSON.parse(localStorage.getItem("prompt"));
-    if (prompt) {
-      generateImage(prompt);
+    const dataSets = fetchData();
+    const lastData = dataSets[dataSets.length - 1]; // Get the last dataset
+
+    const localVideos = JSON.parse(localStorage.getItem("videos") || "[]");
+    const existingVideo = localVideos.find(
+      (video) => video.prompt === lastData.prompt
+    );
+
+    if (!existingVideo) {
+      // If the video hasn't been generated yet
+      generateImage(
+        lastData.prompt,
+        lastData.selected_social_media,
+        lastData.source
+      );
     } else {
-      const localVideos = JSON.parse(localStorage.getItem("videos"));
-      if (localVideos.length) {
-        setVideos(localVideos);
-      }
+      setVideos(localVideos);
       setLoading(false);
     }
   }, []);
 
-  const generateImage = async (prompt) => {
+  const generateImage = async (prompt, selected_social_media, source) => {
     try {
       let twoWords = await generateTwoWordsQuery(prompt);
       let caption = await generateCaption(prompt);
-      console.log("twoWords: ", twoWords);
       let imageUrl = await generateImageFromPrompt(twoWords);
-      console.log("imageUrl: ", imageUrl);
+      let videoTitle = await generateVideoTitle(prompt);
+
       const video = {
+        source: source,
         outputImage: imageUrl,
         words: twoWords,
         prompt: prompt,
         user: 123,
         caption: caption,
+        videoTitle: videoTitle,
+        selected_social_media: selected_social_media,
       };
 
       let updatedVideo = [...videos, video];
 
-      const localVideos = JSON.parse(localStorage.getItem("videos"));
-
-      if (localVideos && localVideos.length) {
-        // setVideos(localVideos);
+      const localVideos = JSON.parse(localStorage.getItem("videos") || "[]");
+      if (localVideos.length) {
         updatedVideo = [...updatedVideo, ...localVideos];
       }
+
       localStorage.setItem("videos", JSON.stringify(updatedVideo));
-      localStorage.removeItem("prompt");
       setVideos(updatedVideo);
       setLoading(false);
     } catch (error) {
@@ -104,7 +176,7 @@ export default function Dashboard() {
       <Appbar drawerWidth={drawerWidth} />
       <Drawer
         sx={{
-          width: "127px",
+          width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
             width: drawerWidth,

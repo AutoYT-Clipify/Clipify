@@ -10,9 +10,26 @@ const SelectGender = () => {
     router.back();
   };
   const [gender, setGender] = useState(null);
+  const fetchData = () => {
+    const data = JSON.parse(localStorage.getItem("data") || "[]");
+    return data;
+  };
+  const modifyLastData = (newData) => {
+    const data = JSON.parse(localStorage.getItem("data") || "[]");
+    const lastIndex = data.length - 1;
 
+    if (lastIndex >= 0) {
+      data[lastIndex] = { ...data[lastIndex], ...newData }; // Merge old and new data for the last item
+      localStorage.setItem("data", JSON.stringify(data));
+    }
+  };
   const handleClick = () => {
     if (!!gender) {
+      console.log(gender);
+      modifyLastData({ selected_voice: gender });
+
+      let data = fetchData();
+      console.log(data);
       router.push("/sign-in");
     } else {
       toast.error("Please select a gender");

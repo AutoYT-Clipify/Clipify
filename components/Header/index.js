@@ -1,95 +1,116 @@
-import Image from 'next/image'
-import PrimaryButton from '../PrimaryButton'
+import Image from "next/image";
+import PrimaryButton from "../PrimaryButton";
 // import SecondaryButton from '../SecondaryButton'
-import styles from './Header.module.css'
-import { Fragment, useEffect, useState } from 'react'
+import styles from "./Header.module.css";
+import { Fragment, useEffect, useState } from "react";
 // import Dropdown from './Dropdown'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import MobileDropDown from './MobileDropdown'
-import { motion } from 'framer-motion'
-import { dropdownData } from '../../constants'
-
+import Link from "next/link";
+import { useRouter } from "next/router";
+import MobileDropDown from "./MobileDropdown";
+import { motion } from "framer-motion";
+import { dropdownData } from "../../constants";
+import { Toaster, toast } from "react-hot-toast";
 const Navbar = () => {
-	const [selectedMenu, setSelectedMenu] = useState(null)
-	const [selectedData, setSelectedData] = useState(null)
-	const [toogle, setToogle] = useState(false)
-	const router = useRouter()
-	const path = router.pathname
-	const [scrolled, setScrolled] = useState(false);
+  const [selectedMenu, setSelectedMenu] = useState(null);
+  const [selectedData, setSelectedData] = useState(null);
+  const [toogle, setToogle] = useState(false);
+  const router = useRouter();
+  const path = router.pathname;
+  const [scrolled, setScrolled] = useState(false);
 
-	const handleScroll = () => {
-	  if (window.scrollY > 0) {
-		setScrolled(true);
-	  } else {
-		setScrolled(false);
-	  }
-	};
-  
-	useEffect(() => {
-	  window.addEventListener('scroll', handleScroll);
-	  return () => {
-		window.removeEventListener('scroll', handleScroll);
-	  };
-	}, []);
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
 
-	const handleMenuSelect = (menu) => {
-		if (menu === selectedMenu) {
-			setSelectedMenu(null)
-			setSelectedData(null)
-		} else {
-			setSelectedMenu(menu)
-		}
-	}
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-	useEffect(() => {
-		if (selectedMenu) {
-			const selectedData = dropdownData.filter(
-				(item) => item.fieldName === selectedMenu
-			)[0]
-			setSelectedData(selectedData)
-		}
-	}, [selectedMenu])
+  const handleMenuSelect = (menu) => {
+    if (menu === selectedMenu) {
+      setSelectedMenu(null);
+      setSelectedData(null);
+    } else {
+      setSelectedMenu(menu);
+    }
+  };
 
-	useEffect(() => {
-		if (!toogle) {
-			let inputs = document.getElementById('burger')
-			inputs.checked = false
+  useEffect(() => {
+    if (selectedMenu) {
+      const selectedData = dropdownData.filter(
+        (item) => item.fieldName === selectedMenu
+      )[0];
+      setSelectedData(selectedData);
+    }
+  }, [selectedMenu]);
 
-		}
-			
-	}, [toogle])
-	//px-[3.6rem] lg:px-[15rem]
-	return (
-		<Fragment>
-			<nav
-				className={`${ scrolled ? `${styles.navbar} ${styles.scroll}` : styles.navbar} w-full h-[15rem] lg:h-[6.2rem] flex justify-center items-center px-[5rem] lg:px-[0rem] py-[20px] z-50`}
-			>
-				<div className="flex w-[140rem] justify-between items-center py-[9px]">
-					<motion.div
-						initial={{
-							x: -500,
-							opacity: 0,
-							scale: 0.5,
-						}}
-						animate={{
-							x: 0,
-							opacity: 1,
-							scale: 1,
-						}}
-						transition={{
-							duration: 1.5,
-						}}
-					>
-						<Link href={'#home'}>
-							<img
-								className="w-[7rem]"
-								src="/logo.png"
-								alt="Logo"
-							/>
-						</Link>
-					</motion.div>
-					{/* <ul className="hidden lg:flex align-middle medium">
+  useEffect(() => {
+    if (!toogle) {
+      let inputs = document.getElementById("burger");
+      inputs.checked = false;
+    }
+  }, [toogle]);
+
+  const [prompt, setPrompt] = useState("");
+  const handleChangePrompt = (event) => {
+    let value = event.target.value;
+    setPrompt(value);
+  };
+
+  const handleGenerate = () => {
+    if (!prompt.length) {
+      toast.error("Please enter the prompt..");
+    } else {
+      const data = {
+        source: currentPathname,
+        prompt: prompt,
+        selected_social_media: [],
+        selected_voice: "",
+      };
+
+      const existingData = JSON.parse(localStorage.getItem("data") || "[]");
+      existingData.push(data);
+
+      localStorage.setItem("data", JSON.stringify(existingData));
+      router.push("get-started");
+    }
+  };
+  //px-[3.6rem] lg:px-[15rem]
+  return (
+    <Fragment>
+      <nav
+        className={`${
+          scrolled ? `${styles.navbar} ${styles.scroll}` : styles.navbar
+        } w-full h-[15rem] lg:h-[6.2rem] flex justify-center items-center px-[5rem] lg:px-[0rem] py-[20px] z-50`}
+      >
+        <div className="flex w-[140rem] justify-between items-center py-[9px]">
+          <motion.div
+            initial={{
+              x: -500,
+              opacity: 0,
+              scale: 0.5,
+            }}
+            animate={{
+              x: 0,
+              opacity: 1,
+              scale: 1,
+            }}
+            transition={{
+              duration: 1.5,
+            }}
+          >
+            <Link href={"#home"}>
+              <img className="w-[7rem]" src="/logo.png" alt="Logo" />
+            </Link>
+          </motion.div>
+          {/* <ul className="hidden lg:flex align-middle medium">
 						<li className="link" onClick={() => setSelectedMenu(null)}>
 							<Link href={'#home'}>Home</Link>
 						</li>
@@ -137,50 +158,48 @@ const Navbar = () => {
 							<Link href="#testimonials">Testimonials</Link>
 						</li>
 					</ul> */}
-					<motion.div
-						initial={{
-							x: 500,
-							opacity: 0,
-							scale: 0.5,
-						}}
-						animate={{
-							x: 0,
-							opacity: 1,
-							scale: 1,
-						}}
-						transition={{
-							duration: 1.5,
-						}}
-						className="hidden lg:block z-[110]"
-					>
-						 <Link href="/get-started">
-                           
-							<PrimaryButton text="Get Started" />
-                            </Link>
-
-					</motion.div>
-					<label className={`${styles.burger} lg:hidden`} htmlFor="burger">
-						<input
-							type="checkbox"
-							id="burger"
-							onClick={() => setToogle((currentValue) => !currentValue)}
-						/>
-						<span></span>
-						<span></span>
-						<span></span>
-					</label>
-				</div>
-			</nav>
-			{/* {selectedMenu && selectedData && (
+          <motion.div
+            initial={{
+              x: 500,
+              opacity: 0,
+              scale: 0.5,
+            }}
+            animate={{
+              x: 0,
+              opacity: 1,
+              scale: 1,
+            }}
+            transition={{
+              duration: 1.5,
+            }}
+            className="hidden lg:block z-[110]"
+          >
+            {/* <Link href="/get-started"> */}
+            {/* <PrimaryButton text="Get Started" onClick={handleGenerate} /> */}
+            {/* </Link> */}
+          </motion.div>
+          <label className={`${styles.burger} lg:hidden`} htmlFor="burger">
+            <input
+              type="checkbox"
+              id="burger"
+              onClick={() => setToogle((currentValue) => !currentValue)}
+            />
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+      </nav>
+      {/* {selectedMenu && selectedData && (
 				<Dropdown
 					setSelectedMenu={setSelectedMenu}
 					selectedData={selectedData}
 					handleMenuSelect={handleMenuSelect}
 				/>
 			)} */}
-			{toogle && <MobileDropDown setToogle={setToogle} />}
-		</Fragment>
-	)
-}
+      {toogle && <MobileDropDown setToogle={setToogle} />}
+    </Fragment>
+  );
+};
 
-export default Navbar
+export default Navbar;

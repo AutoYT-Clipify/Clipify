@@ -39,9 +39,7 @@ const Showcase = ({ showcase }) => {
       setDynamicPlaceholder("Create tik tok videos");
     } else if (currentPathname === "/text-to-reels") {
       setSearchText("Create a Reel about….");
-      setFirst(
-        "ReelGPT is finally here. Create 30 viral reels in 30 seconds."
-      );
+      setFirst("ReelGPT is finally here. Create 30 viral reels in 30 seconds.");
       setTitle("Turn Your Text Prompt to the Next Viral Reels with AI");
       setDetail(
         "Turn Your Text into a Viral Reels with Human-like voice over & Caption ready to post on all platforms! Supports all languages."
@@ -91,7 +89,7 @@ const Showcase = ({ showcase }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [i,txt]);
+  }, [i, txt]);
 
   useEffect(() => {
     if (showSpinner) {
@@ -119,11 +117,29 @@ const Showcase = ({ showcase }) => {
     setPrompt(value);
   };
 
+  // const handleGenerate = () => {
+  //   if (!prompt.length) {
+  //     toast.error("Please enter the prompt..");
+  //   } else {
+  //     localStorage.setItem("prompt", JSON.stringify(prompt));
+  //     router.push("get-started");
+  //   }
+  // };
   const handleGenerate = () => {
     if (!prompt.length) {
       toast.error("Please enter the prompt..");
     } else {
-      localStorage.setItem("prompt", JSON.stringify(prompt));
+      const data = {
+        source: currentPathname,
+        prompt: prompt,
+        selected_social_media: [],
+        selected_voice: "",
+      };
+
+      const existingData = JSON.parse(localStorage.getItem("data") || "[]");
+      existingData.push(data);
+
+      localStorage.setItem("data", JSON.stringify(existingData));
       router.push("get-started");
     }
   };
